@@ -1,0 +1,41 @@
+{
+  "identity": {
+    "name": "Ember Archive",
+    "dungeon_type": "dwarven library",
+    "gameplay_focus": ["combat", "exploration"]
+  },
+  "technical": {
+    "grid_type": "square",
+    "tile_scale_ft": 5,
+    "width_squares": 24,
+    "height_squares": 18,
+    "image_dimensions_px": [2400, 1800],
+    "vtt_target": "FoundryVTT",
+    "print": {
+      "enabled": true,
+      "paper": "Letter",
+      "physical_grid_inches": 1,
+      "margin_inches": 0.25,
+      "split_pages": true
+    }
+  },
+  "tactical": {
+    "party_level": 6,
+    "party_size": 4,
+    "largest_creature_size": "huge",
+    "largest_creature_traversal": {"required": true}
+  },
+  "rooms": [
+    {"id": "entry", "name": "Entry Hall", "type": "entry", "x": 1, "y": 1, "width": 6, "height": 5},
+    {"id": "stacks", "name": "Burned Stacks", "type": "combat", "x": 9, "y": 1, "width": 8, "height": 6},
+    {"id": "vault", "name": "Forge Vault", "type": "boss", "x": 7, "y": 10, "width": 12, "height": 7}
+  ],
+  "corridors": [
+    {"id": "c1", "connects": ["entry", "stacks"], "width_squares": 3, "path": [[7, 3], [9, 3]]},
+    {"id": "c2", "connects": ["stacks", "vault"], "width_squares": 3, "path": [[13, 7], [13, 10]]}
+  ],
+  "encounters": [
+    {"id": "e1", "room_id": "stacks", "role": "skirmish", "enemy_sizes": ["medium", "large"]},
+    {"id": "e2", "room_id": "vault", "role": "boss", "enemy_sizes": ["huge"]}
+  ]
+}

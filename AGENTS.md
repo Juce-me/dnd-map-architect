@@ -180,22 +180,23 @@ Boris Cherny (creator of Claude Code) keeps his team's file around 100 lines. Un
 ### Stack
 - TODO: No application stack has been verified yet.
 - TODO: No package manager has been verified yet.
-- TODO: No runtime entrypoint has been verified yet.
-- This project currently contains agent/bootstrap documentation only; no application source files have been added yet.
+- Python validator scripts for the `dnd-map-architect` skill run through the project-local `.venv`.
+- This project currently contains agent/bootstrap documentation and the `skills/dnd-map-architect` skill package.
 
 ### Commands
 - Install: TODO: no `package.json`, `pyproject.toml`, `Cargo.toml`, or `Makefile` exists yet.
 - Build: TODO: no `package.json`, `pyproject.toml`, `Cargo.toml`, or `Makefile` exists yet.
-- Test: TODO: no `package.json`, `pyproject.toml`, `Cargo.toml`, or `Makefile` exists yet.
-- Lint/typecheck: TODO: no `package.json`, `pyproject.toml`, `Cargo.toml`, or `Makefile` exists yet.
-- Run locally: TODO: no runtime entrypoint has been verified yet.
+- Test skill validator: `.venv/bin/python skills/dnd-map-architect/tests/test_validate_dungeon_spec.py`
+- Validate bundled example: `.venv/bin/python skills/dnd-map-architect/scripts/validate_dungeon_spec.py skills/dnd-map-architect/examples/valid-dungeon-spec.json`
+- Lint/typecheck: `.venv/bin/python -m py_compile skills/dnd-map-architect/scripts/validate_dungeon_spec.py skills/dnd-map-architect/tests/test_validate_dungeon_spec.py`
+- Run locally: no application runtime entrypoint has been verified yet.
 
 No `package.json`, `pyproject.toml`, `Cargo.toml`, or `Makefile` exists in this project yet. Add verified commands here when the project adds them.
 
 ### Layout
 - Project root: `/Users/juce/Documents/devs/dnd-map-architect`
-- Source: TODO: no source directory exists yet.
-- Tests: TODO: no test directory exists yet.
+- Skill source: `skills/dnd-map-architect/`
+- Tests: `skills/dnd-map-architect/tests/`
 - Docs: `docs/agents.md` defines agent work artifact rules and doc-review criteria; `postmortem/` contains the postmortem workflow.
 
 ### Conventions

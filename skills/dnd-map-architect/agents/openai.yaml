@@ -1,0 +1,4 @@
+interface:
+  display_name: "DND Map Architect"
+  short_description: "Design validated tactical D&D battlemaps"
+  default_prompt: "Use $dnd-map-architect to design a tactically playable, grid-consistent D&D battlemap for my encounter."
