@@ -222,6 +222,8 @@ No `package.json`, `pyproject.toml`, `Cargo.toml`, or `Makefile` exists in this 
 
 When the user corrects your approach, append a one-line rule here before ending the session. Write it concretely ("Always use X for Y"), never abstractly ("be careful with Y"). If an existing line already covers the correction, tighten it instead of adding a new one. Remove lines when the underlying issue goes away (model upgrades, refactors, process changes).
 
+- When reviewing generated battlemap images, inspect every door, stair, and archway square individually — image models routinely drop the grid on door-threshold squares even when the rest of the grid is continuous.
+
 ---
 
 ## 12. How this file was built

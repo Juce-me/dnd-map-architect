@@ -33,6 +33,7 @@ Rendering requirements:
 - Top-down orthographic battlemap.
 - Clear walls, doors, stairs, ledges, hazards, and walkable spaces.
 - Playable grid squares remain readable and token-safe.
+- The grid must cover every square of the image, including door thresholds, stair landings, corridor mouths, archway interiors, and any dark or void area outside rooms. No square may be obscured or overwritten by door art, threshold tiles, decorative inlays, or texture fills.
 - Do not change room count, room positions, corridor connections, or grid scale.
 ```
 
@@ -43,6 +44,8 @@ Append relevant constraints:
 ```text
 Do not use perspective view.
 Do not warp, stretch, bend, or fade the grid.
+Do not omit grid lines on any square. Door thresholds, stair landings, archway openings, and corridor entrances must show the same continuous grid as the rest of the map.
+Do not paint door art, ornamental tiles, or texture fills over grid lines.
 Do not create disconnected rooms or floating corridors.
 Do not add extra rooms, doors, walls, pits, or blocked paths that contradict the topology.
 Do not place furniture or rubble so densely that tokens cannot stand in intended combat spaces.
@@ -57,6 +60,7 @@ Check the generated image against the plan:
 
 - Count grid squares horizontally and vertically.
 - Confirm pixels per square or physical square alignment.
+- Confirm grid lines are continuous on every square, including door thresholds, stair landings, archway interiors, and void areas outside rooms. A single missing square at a doorway breaks token alignment for that square.
 - Confirm every room exists and is connected as specified.
 - Confirm corridors have the specified width.
 - Confirm doors align with walls and corridors.
