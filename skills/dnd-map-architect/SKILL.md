@@ -1,6 +1,6 @@
 ---
 name: dnd-map-architect
-description: Use when Codex needs to design a dungeon, cave, fortress, lair, encounter map, printable battlemap, VTT map, terrain-module layout, or image-generation prompt for tabletop RPG combat.
+description: Use when designing a dungeon, cave, fortress, lair, encounter map, printable battlemap, VTT map, terrain-module layout, or image-generation prompt for tabletop RPG combat.
 ---
 
 # DND Map Architect
