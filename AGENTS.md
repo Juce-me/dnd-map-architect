@@ -209,7 +209,8 @@ No `package.json`, `pyproject.toml`, `Cargo.toml`, or `Makefile` exists in this 
 - TODO: Add constraints only after they are verified for this project.
 
 ### Git workflow
-- TODO: Document branch and PR workflow when one is established.
+- Always create a feature branch off `main` for any change. Never commit directly to `main`.
+- Push the branch and open a PR for review before merging into `main`.
 
 ---
 
