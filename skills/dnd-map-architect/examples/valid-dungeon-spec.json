@@ -14,8 +14,8 @@
     "print": {
       "enabled": true,
       "paper": "Letter",
-      "physical_grid_inches": 1,
-      "margin_inches": 0.25,
+      "physical_grid_mm": 28,
+      "margin_mm": 6,
       "split_pages": true
     }
   },

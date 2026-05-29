@@ -19,11 +19,12 @@ SIZE_FOOTPRINTS = {
 GRID_TYPES = {"square", "hex"}
 HEX_ORIENTATIONS = {"pointy", "pointy-top", "flat", "flat-top"}
 HEX_COORDINATE_SYSTEMS = {"axial", "offset"}
+MM_PER_INCH = 25.4
 PAPER_SIZES = {
-    "A4": (8.27, 11.69),
-    "A3": (11.69, 16.54),
-    "Letter": (8.5, 11.0),
-    "Ledger": (11.0, 17.0),
+    "A4": (210, 297),
+    "A3": (297, 420),
+    "Letter": (215.9, 279.4),
+    "Ledger": (279.4, 431.8),
 }
 
 
@@ -493,21 +494,26 @@ def _validate_print(technical, context, errors, warnings):
         errors.append(f"PRINT_PAPER_INVALID: paper must be one of {sorted(PAPER_SIZES)}")
         return
 
-    physical_grid = print_spec.get("physical_grid_inches")
+    physical_grid = print_spec.get("physical_grid_mm")
     if not _positive_number(physical_grid):
-        errors.append("PRINT_GRID_INVALID: physical_grid_inches must be positive")
+        errors.append("PRINT_GRID_INVALID: physical_grid_mm must be positive")
         return
 
-    margin = print_spec.get("margin_inches", 0)
+    margin = print_spec.get("margin_mm", 0)
     if not _nonnegative_number(margin):
-        errors.append("PRINT_MARGIN_INVALID: margin_inches cannot be negative")
+        errors.append("PRINT_MARGIN_INVALID: margin_mm cannot be negative")
         return
-    elif margin < 0.2:
-        warnings.append("PRINT_MARGIN_TIGHT: margins below 0.2 inches may be clipped")
+    elif margin < 5:
+        warnings.append("PRINT_MARGIN_TIGHT: margins below 5 mm may be clipped")
 
     split_pages = print_spec.get("split_pages")
     if split_pages is not None and not isinstance(split_pages, bool):
         errors.append("PRINT_SPLIT_PAGES_INVALID: split_pages must be true or false")
+        return
+
+    dpi = print_spec.get("dpi")
+    if dpi is not None and not _positive_number(dpi):
+        errors.append("PRINT_DPI_INVALID: dpi must be positive")
         return
 
     width_squares = context.get("width_squares")
@@ -522,6 +528,23 @@ def _validate_print(technical, context, errors, warnings):
         fits_landscape = map_width <= usable_height and map_height <= usable_width
         if not fits_portrait and not fits_landscape and split_pages is not True:
             errors.append("PRINT_REQUIRES_SPLIT: map exceeds single-page usable area without split_pages")
+        elif (fits_portrait or fits_landscape) and usable_width > 0 and usable_height > 0:
+            coverage = (map_width * map_height) / (usable_width * usable_height)
+            if coverage < 0.5:
+                warnings.append(
+                    f"PRINT_UNDERFILL: map fills only {round(coverage * 100)}% of the usable page; "
+                    "increase the grid or reduce paper size to reach the page edges"
+                )
+
+    pixels_per_square = context.get("pixels_per_square")
+    if dpi is not None and pixels_per_square:
+        expected_pps = physical_grid / MM_PER_INCH * dpi
+        if expected_pps > 0 and abs(pixels_per_square - expected_pps) / expected_pps > 0.02:
+            actual_mm = pixels_per_square / dpi * MM_PER_INCH
+            warnings.append(
+                f"PRINT_DPI_MISMATCH: {pixels_per_square} px/square at {dpi} DPI prints "
+                f"{actual_mm:.1f} mm squares, not {physical_grid} mm; use {round(expected_pps)} px/square"
+            )
 
 
 def main(argv=None):

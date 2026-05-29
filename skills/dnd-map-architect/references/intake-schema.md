@@ -21,7 +21,7 @@ Use intake to gather only information that changes topology, tactics, grid math,
 - `tile_scale_ft`: default 5.
 - `width_squares` and `height_squares`: exact map size.
 - `image_dimensions_px`: exact output pixels when VTT or image generation is needed.
-- `print`: enabled, paper, physical grid inches, margin inches, split-pages requirement.
+- `print`: enabled, paper, `physical_grid_mm`, `margin_mm`, `dpi`, split-pages requirement. When printing to a single sheet, derive `width_squares`/`height_squares` from the page (see `references/print-rules.md`), do not pick them first and hope they fit.
 - `vtt_target`: FoundryVTT, Roll20, Owlbear Rodeo, generic VTT, none.
 - `terrain_system`: Dwarven Forge, WarLock Tiles, Dragonlock, printable terrain, none.
 - `wall_thickness_squares`: default 0.5 for drawn maps; terrain systems may require whole-tile walls.
@@ -56,7 +56,7 @@ Ask these only when relevant:
 
 - Huge or gargantuan creature: "Must that creature traverse corridors, or can it remain in a dedicated arena?"
 - Boss encounter: "Should the boss arena support phases, lair actions, reinforcements, or terrain transformation?"
-- Printable output: "Which paper size, physical grid size, and margin safety do you need?"
+- Printable output: "Which paper size, square size in mm, margin in mm, and print DPI do you need?"
 - VTT output: "Which VTT and pixels-per-square target should the map use?"
 - Stealth focus: "Do you want alternate routes, hidden passages, line-of-sight blockers, or bypassable encounters?"
 - Modular terrain: "Which terrain system and available module sizes should constrain rooms and corridors?"
@@ -72,6 +72,6 @@ If the user gives a high-level request and wants momentum, assume:
 - Medium party of 4 unless party size is given.
 - Largest creature must fit only where it appears unless traversal is explicitly required.
 - Generic VTT with 100 px per square if VTT output is requested without target details.
-- Print maps use 1 inch grid and 0.25 inch margins unless paper details are given.
+- Print maps use a 28 mm grid (25.4 mm for a true 1-inch grid), 6 mm margins, and 300 DPI unless the user specifies otherwise.
 
 State assumptions before topology generation.

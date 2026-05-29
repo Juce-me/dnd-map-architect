@@ -30,8 +30,8 @@ def valid_spec():
             "print": {
                 "enabled": True,
                 "paper": "Letter",
-                "physical_grid_inches": 1,
-                "margin_inches": 0.25,
+                "physical_grid_mm": 28,
+                "margin_mm": 6,
                 "split_pages": True,
             },
         },
@@ -54,6 +54,49 @@ def valid_spec():
             {"id": "e1", "room_id": "stacks", "role": "skirmish", "enemy_sizes": ["medium", "large"]},
             {"id": "e2", "room_id": "vault", "role": "boss", "enemy_sizes": ["huge"]},
         ],
+    }
+
+
+def small_print_spec(
+    width_squares=4,
+    height_squares=4,
+    paper="A4",
+    physical_grid_mm=25.4,
+    margin_mm=6,
+    split_pages=False,
+    dpi=None,
+    image_px=None,
+):
+    print_block = {
+        "enabled": True,
+        "paper": paper,
+        "physical_grid_mm": physical_grid_mm,
+        "margin_mm": margin_mm,
+        "split_pages": split_pages,
+    }
+    if dpi is not None:
+        print_block["dpi"] = dpi
+    technical = {
+        "grid_type": "square",
+        "tile_scale_ft": 5,
+        "width_squares": width_squares,
+        "height_squares": height_squares,
+        "print": print_block,
+    }
+    if image_px is not None:
+        technical["image_dimensions_px"] = image_px
+    return {
+        "identity": {"name": "Tiny Crypt", "dungeon_type": "crypt"},
+        "technical": technical,
+        "tactical": {"party_size": 4},
+        "rooms": [
+            {"id": "entry", "name": "Entry", "type": "entry", "x": 0, "y": 0, "width": 2, "height": 2},
+            {"id": "hall", "name": "Hall", "type": "combat", "x": 2, "y": 0, "width": 2, "height": 2},
+        ],
+        "corridors": [
+            {"id": "c1", "connects": ["entry", "hall"], "width_squares": 1, "path": [[2, 0], [2, 2]]},
+        ],
+        "encounters": [],
     }
 
 
@@ -221,10 +264,10 @@ class ValidateDungeonSpecTests(unittest.TestCase):
     def test_invalid_print_margin_returns_error_instead_of_crashing(self):
         validator = load_validator()
         spec = valid_spec()
-        spec["technical"]["print"]["margin_inches"] = "bad"
+        spec["technical"]["print"]["margin_mm"] = "bad"
         report = validator.validate_spec(spec)
         self.assertFalse(report["ok"])
-        self.assertIn("PRINT_MARGIN_INVALID: margin_inches cannot be negative", report["errors"])
+        self.assertIn("PRINT_MARGIN_INVALID: margin_mm cannot be negative", report["errors"])
 
     def test_invalid_grid_type_returns_error_instead_of_crashing(self):
         validator = load_validator()
@@ -281,18 +324,18 @@ class ValidateDungeonSpecTests(unittest.TestCase):
     def test_boolean_print_grid_returns_error(self):
         validator = load_validator()
         spec = valid_spec()
-        spec["technical"]["print"]["physical_grid_inches"] = True
+        spec["technical"]["print"]["physical_grid_mm"] = True
         report = validator.validate_spec(spec)
         self.assertFalse(report["ok"])
-        self.assertIn("PRINT_GRID_INVALID: physical_grid_inches must be positive", report["errors"])
+        self.assertIn("PRINT_GRID_INVALID: physical_grid_mm must be positive", report["errors"])
 
     def test_boolean_print_margin_returns_error(self):
         validator = load_validator()
         spec = valid_spec()
-        spec["technical"]["print"]["margin_inches"] = True
+        spec["technical"]["print"]["margin_mm"] = True
         report = validator.validate_spec(spec)
         self.assertFalse(report["ok"])
-        self.assertIn("PRINT_MARGIN_INVALID: margin_inches cannot be negative", report["errors"])
+        self.assertIn("PRINT_MARGIN_INVALID: margin_mm cannot be negative", report["errors"])
 
     def test_boolean_room_coordinate_returns_error(self):
         validator = load_validator()
@@ -358,6 +401,57 @@ class ValidateDungeonSpecTests(unittest.TestCase):
         spec["technical"]["coordinate_system"] = "cube"
         report = validator.validate_spec(spec)
         self.assertIn("GRID_HEX_COORDINATE_SYSTEM_INVALID: coordinate_system must be one of ['axial', 'offset']", report["errors"])
+
+    def test_print_underfill_warns_when_map_far_smaller_than_page(self):
+        validator = load_validator()
+        spec = small_print_spec(width_squares=4, height_squares=4, paper="A4", physical_grid_mm=25.4)
+        report = validator.validate_spec(spec)
+        self.assertEqual([], report["errors"])
+        self.assertTrue(
+            any(w.startswith("PRINT_UNDERFILL:") for w in report["warnings"]),
+            report["warnings"],
+        )
+
+    def test_a3_grid_sized_to_28mm_fills_page_without_underfill(self):
+        validator = load_validator()
+        spec = small_print_spec(width_squares=14, height_squares=10, paper="A3", physical_grid_mm=28)
+        report = validator.validate_spec(spec)
+        self.assertEqual([], report["errors"])
+        self.assertFalse(
+            any(w.startswith("PRINT_UNDERFILL:") for w in report["warnings"]),
+            report["warnings"],
+        )
+
+    def test_print_dpi_pixel_size_mismatch_warns(self):
+        validator = load_validator()
+        spec = small_print_spec(
+            width_squares=4, height_squares=4, paper="A4",
+            physical_grid_mm=25.4, dpi=300, image_px=[400, 400],
+        )
+        report = validator.validate_spec(spec)
+        self.assertTrue(
+            any(w.startswith("PRINT_DPI_MISMATCH:") for w in report["warnings"]),
+            report["warnings"],
+        )
+
+    def test_print_dpi_pixel_size_match_does_not_warn(self):
+        validator = load_validator()
+        spec = small_print_spec(
+            width_squares=4, height_squares=4, paper="A4",
+            physical_grid_mm=25.4, dpi=300, image_px=[1200, 1200],
+        )
+        report = validator.validate_spec(spec)
+        self.assertFalse(
+            any(w.startswith("PRINT_DPI_MISMATCH:") for w in report["warnings"]),
+            report["warnings"],
+        )
+
+    def test_invalid_print_dpi_returns_error(self):
+        validator = load_validator()
+        spec = small_print_spec(dpi="fast")
+        report = validator.validate_spec(spec)
+        self.assertFalse(report["ok"])
+        self.assertIn("PRINT_DPI_INVALID: dpi must be positive", report["errors"])
 
 
 if __name__ == "__main__":

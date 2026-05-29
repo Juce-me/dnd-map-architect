@@ -59,18 +59,21 @@ For hex grids:
 
 ## Print Validation
 
-Block or correct:
+All print fields are millimeters. Block or correct:
 
 - Missing paper size for printable output.
 - `print.enabled` must be true or false.
 - `split_pages` must be true or false when present.
-- Missing physical grid size.
-- Negative margins.
-- Output that cannot fit single-page and lacks split-page support.
+- Missing or non-positive `physical_grid_mm`.
+- Negative `margin_mm`.
+- Non-positive `dpi` when present.
+- Output that cannot fit single-page and lacks split-page support (`PRINT_REQUIRES_SPLIT`).
 
 Warn:
 
-- Margins below 0.2 inches.
+- Margins below 5 mm (`PRINT_MARGIN_TIGHT`).
+- Map fills under half the usable page (`PRINT_UNDERFILL`): the grid is too small for the paper, or the paper too big for the grid. This is the check that catches a map whose squares are the right size but whose overall sheet does not match the page.
+- Declared `dpi` and image pixels imply a printed square size that differs from `physical_grid_mm` (`PRINT_DPI_MISMATCH`).
 - Very large page splits with no overlap or assembly labels.
 - Dark backgrounds that waste ink unless requested.
 
@@ -99,7 +102,7 @@ Report format:
 {
   "ok": false,
   "errors": ["STRUCTURE_UNREACHABLE_ROOM: vault is not reachable from entry"],
-  "warnings": ["PRINT_MARGIN_TIGHT: margins below 0.2 inches may be clipped"]
+  "warnings": ["PRINT_MARGIN_TIGHT: margins below 5 mm may be clipped"]
 }
 ```
 
