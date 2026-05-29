@@ -26,7 +26,7 @@ Use this skill to create Dungeons & Dragons battlemaps that are playable first a
 - If the user gives enough constraints to proceed, state assumptions and continue.
 - Reject invalid topology before prompt generation: disconnected rooms, trapped large creatures, broken corridors, non-integer grids, and impossible print scaling are blockers.
 - Do not use prose-only dungeon plans as a bypass for validator-backed image prompt generation.
-- Keep grid math exact: square maps require identical pixels per square on both axes; print maps require physical grid size and margin safety.
+- Keep grid math exact: square maps require identical pixels per square on both axes; print maps work in millimeters and require physical grid size, margins, DPI, and a grid sized to fit the chosen paper.
 - Preserve gameplay usability over aesthetics: every combat space needs movement, cover logic, line-of-sight intent, and reachable objectives.
 - Output correction recommendations as concrete changes, not vague style notes.
 

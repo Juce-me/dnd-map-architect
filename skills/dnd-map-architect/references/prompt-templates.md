@@ -10,6 +10,11 @@ Create a top-down Dungeons & Dragons battlemap with an exact {grid_type} grid.
 Map size: {width_squares} by {height_squares} squares.
 Scale: {tile_scale_ft} ft per square.
 Output size: {image_width_px} by {image_height_px} px, exactly {pixels_per_square} px per square.
+Print target (include when printing to paper):
+- Paper: {paper}, {paper_width_mm} by {paper_height_mm} mm, {print_orientation}.
+- Physical grid: {physical_grid_mm} mm per square inside {margin_mm} mm margins.
+- Printed map area: {map_width_mm} by {map_height_mm} mm; each square must measure {physical_grid_mm} mm on paper.
+- Print resolution: {dpi} DPI, so render {print_pixels_per_square} px per square ({print_image_width_px} by {print_image_height_px} px) to hit that physical size.
 Grid: straight, evenly spaced, non-distorted, aligned edge to edge.
 
 Dungeon identity:
@@ -67,6 +72,7 @@ Check the generated image against the plan:
 - Confirm boss and large creature spaces are maneuverable.
 - Confirm cover and hazards do not invalidate movement.
 - Confirm print margins, split pages, or VTT dimensions remain valid.
+- For print: measure a test page - each square must equal the spec's `physical_grid_mm`, and the full sheet must match the chosen paper.
 
 ## Correction Prompt Template
 
@@ -80,6 +86,7 @@ Do not change:
 - Map size: {width_squares} by {height_squares} squares.
 - Output size: {image_width_px} by {image_height_px} px.
 - Pixels per square: {pixels_per_square}.
+- Physical print scale: {physical_grid_mm} mm per square on {paper}.
 - Room topology: {topology_summary}.
 
 The corrected map must keep a straight, evenly spaced, non-distorted grid and must keep all intended combat spaces token-playable.

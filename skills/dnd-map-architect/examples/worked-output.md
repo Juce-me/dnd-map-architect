@@ -2,7 +2,7 @@
 
 ## JSON Dungeon Specification
 
-Ember Archive is a ruined dwarven library built for a 4-player level 6 party. It uses a 24 x 18 square grid, 5 ft per square, 2400 x 1800 px output, FoundryVTT target, and printable Letter output with split pages.
+Ember Archive is a ruined dwarven library built for a 4-player level 6 party. It uses a 24 x 18 square grid, 5 ft per square, 2400 x 1800 px output, FoundryVTT target, and printable Letter output at 28 mm per square (6 mm margins) split across pages.
 
 The validator input is `examples/valid-dungeon-spec.json`.
 
@@ -45,6 +45,11 @@ Create a top-down Dungeons & Dragons battlemap with an exact square grid.
 Map size: 24 by 18 squares.
 Scale: 5 ft per square.
 Output size: 2400 by 1800 px, exactly 100 px per square.
+Print target (Letter, split pages):
+- Paper: Letter, 215.9 by 279.4 mm, landscape.
+- Physical grid: 28 mm per square inside 6 mm margins.
+- Printed map area: 672 by 504 mm, tiled across multiple Letter sheets with cut and assembly labels.
+- Print resolution: 300 DPI, so the print export is 331 px per square (7944 by 5958 px); the 2400 by 1800 px output above is the FoundryVTT export at 100 px per square.
 Grid: straight, evenly spaced, non-distorted, aligned edge to edge.
 
 Dungeon identity:

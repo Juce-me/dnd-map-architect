@@ -2,12 +2,27 @@
 
 ## Print Targets
 
+Work in millimeters. Inches are never stored in the spec.
+
 Default printable assumptions:
 
-- Physical grid: 1 inch per square for 5 ft scale.
-- Margin safety: 0.25 inches unless the user specifies otherwise.
-- Paper: ask the user for A4, A3, Letter, Ledger, or custom.
-- Split pages: required for most full battlemaps at 1 inch squares.
+- Physical grid: 28 mm per square (heroic-scale miniatures); set 25.4 mm for a true 1-inch grid.
+- Margin safety: 6 mm unless the user specifies otherwise. Most desktop printers cannot print the outer ~5 mm of a sheet, so treat 0 mm margins as full-bleed only.
+- Paper (portrait, width x height): A4 210 x 297 mm, A3 297 x 420 mm, Letter 215.9 x 279.4 mm, Ledger 279.4 x 431.8 mm. Ask the user, or take custom dimensions.
+- Print resolution: 300 DPI default. Required px per square = `physical_grid_mm / 25.4 x DPI`, so 25.4 mm at 300 DPI is 300 px and 28 mm at 300 DPI is 331 px.
+- Split pages: required whenever the map area exceeds one usable sheet.
+
+Size the grid to the page, not the page to the grid. For a single sheet:
+
+1. `usable_mm = paper_side - 2 x margin_mm` for each axis; try both orientations.
+2. `max_squares = floor(usable_mm / physical_grid_mm)` per axis.
+3. Choose `width_squares` x `height_squares` within those maxima.
+
+Worked example - single A3 at 28 mm/square, 6 mm margins, landscape:
+
+- usable = (420 - 12) x (297 - 12) = 408 x 285 mm.
+- max = floor(408 / 28) x floor(285 / 28) = 14 x 10 squares (392 x 280 mm).
+- 420 / 28 = 15 exactly, but 297 / 28 = 10.6, so the short edge never fills with whole 28 mm squares; expect a thin border there. Squares that are individually correct on a grid not sized this way is exactly what makes a map "miss" A3.
 
 Include page-splitting notes:
 
