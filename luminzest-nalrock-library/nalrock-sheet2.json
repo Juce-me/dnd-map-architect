@@ -1,0 +1,109 @@
+{
+  "identity": {
+    "name": "The Great Library of Nalrock — Sheet 2 (Levels 3–4)",
+    "dungeon_type": "dwarven library",
+    "gameplay_focus": ["exploration", "puzzle", "combat"]
+  },
+  "technical": {
+    "grid_type": "square",
+    "tile_scale_ft": 10,
+    "width_squares": 10,
+    "height_squares": 14,
+    "image_dimensions_px": [1000, 1400],
+    "vtt_target": "generic VTT",
+    "print": {
+      "enabled": true,
+      "paper": "A3",
+      "physical_grid_mm": 28,
+      "margin_mm": 6,
+      "split_pages": false
+    }
+  },
+  "tactical": {
+    "party_level": 5,
+    "party_size": 5,
+    "largest_creature_size": "medium",
+    "largest_creature_traversal": {"required": true}
+  },
+  "rooms": [
+    {
+      "id": "L3-reading",
+      "name": "Grand Reading Hall",
+      "type": "exploration",
+      "x": 0,
+      "y": 0,
+      "width": 10,
+      "height": 6,
+      "secret": false,
+      "notes": ["vast shelves and reading tables", "odd statue hints secret passage", "high columns and alcoves for cover"]
+    },
+    {
+      "id": "L3-L4-hazard",
+      "name": "Hazardous Transition",
+      "type": "hazard",
+      "x": 0,
+      "y": 6,
+      "width": 10,
+      "height": 3,
+      "secret": false,
+      "notes": ["collapsed floor tiles (difficult terrain)", "unstable ceiling (falling debris)", "stairs down to Level 4"]
+    },
+    {
+      "id": "L4-archive",
+      "name": "Hidden Archive Vault (beneath Level 3)",
+      "type": "boss",
+      "x": 0,
+      "y": 9,
+      "width": 10,
+      "height": 5,
+      "secret": true,
+      "accessible_from": "L3-L4-hazard",
+      "notes": ["puzzle chamber with 4 stone pedestals (1 tactical square)", "construct guardian if puzzle fails", "vault contents are objective"]
+    }
+  ],
+  "corridors": [
+    {
+      "id": "c2-reading-to-hazard",
+      "connects": ["L3-reading", "L3-L4-hazard"],
+      "width_squares": 3,
+      "path": [[3, 5], [3, 6]],
+      "edge_type": "corridor",
+      "door_type": "none"
+    },
+    {
+      "id": "c3-hazard-to-archive",
+      "connects": ["L3-L4-hazard", "L4-archive"],
+      "width_squares": 2,
+      "path": [[3, 8], [3, 9]],
+      "edge_type": "staircase",
+      "door_type": "none"
+    },
+    {
+      "id": "c4-secret-passage",
+      "connects": ["L3-reading", "L4-archive"],
+      "width_squares": 1,
+      "path": [[8, 6], [8, 9]],
+      "edge_type": "secret passage",
+      "door_type": "hidden (odd statue)",
+      "notes": ["bypass hazard transition", "requires investigation or Perception check DC 13"]
+    }
+  ],
+  "encounters": [
+    {
+      "id": "e3-hazard",
+      "room_id": "L3-L4-hazard",
+      "role": "hazard",
+      "hazard_type": ["difficult terrain", "falling debris"],
+      "mechanics": "DC 10 Acrobatics to cross at normal speed; 1d6 damage on failed DC 12 Dex save (1 in 6 chance per round)"
+    },
+    {
+      "id": "e4-construct",
+      "room_id": "L4-archive",
+      "role": "boss",
+      "enemy_types": ["stone golem or construct guardian"],
+      "enemy_sizes": ["medium"],
+      "count": 1,
+      "trigger": "incorrect puzzle solution"
+    }
+  ]
+}

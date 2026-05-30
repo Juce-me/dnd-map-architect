@@ -224,6 +224,8 @@ No `package.json`, `pyproject.toml`, `Cargo.toml`, or `Makefile` exists in this 
 When the user corrects your approach, append a one-line rule here before ending the session. Write it concretely ("Always use X for Y"), never abstractly ("be careful with Y"). If an existing line already covers the correction, tighten it instead of adding a new one. Remove lines when the underlying issue goes away (model upgrades, refactors, process changes).
 
 - When reviewing generated battlemap images, inspect every door, stair, and archway square individually — image models routinely drop the grid on door-threshold squares even when the rest of the grid is continuous.
+- Battlemap prompts must explicitly state: never render monsters, enemies, or NPCs on the map. Interior layout, cover, and atmospheric details only; players place tokens during play.
+- Battlemap prompts must include explicit numbered coordinate grid labels (columns 0–N, rows 0–M) and emphasize grid line visibility — models generate more accurate, playable maps when coordinates are verbally reinforced in the prompt structure.
 
 ---
 

@@ -1,0 +1,80 @@
+{
+  "identity": {
+    "name": "The Great Library of Nalrock — Sheet 1 (Levels 1–2)",
+    "dungeon_type": "dwarven library",
+    "gameplay_focus": ["combat", "exploration"]
+  },
+  "technical": {
+    "grid_type": "square",
+    "tile_scale_ft": 10,
+    "width_squares": 10,
+    "height_squares": 14,
+    "image_dimensions_px": [1000, 1400],
+    "vtt_target": "generic VTT",
+    "print": {
+      "enabled": true,
+      "paper": "A3",
+      "physical_grid_mm": 28,
+      "margin_mm": 6,
+      "split_pages": false
+    }
+  },
+  "tactical": {
+    "party_level": 5,
+    "party_size": 5,
+    "largest_creature_size": "medium",
+    "largest_creature_traversal": {"required": true}
+  },
+  "rooms": [
+    {
+      "id": "L1-entrance",
+      "name": "Entrance Garden",
+      "type": "entry",
+      "x": 0,
+      "y": 0,
+      "width": 10,
+      "height": 6,
+      "secret": false,
+      "notes": ["guarded by drakes", "high vaulted ceiling", "stone pathways and benches"]
+    },
+    {
+      "id": "L2-reception",
+      "name": "Reception Hall",
+      "type": "combat",
+      "x": 0,
+      "y": 6,
+      "width": 10,
+      "height": 8,
+      "secret": false,
+      "notes": ["defended by council cultists", "columns and desks for cover", "transition to Level 3"]
+    }
+  ],
+  "corridors": [
+    {
+      "id": "c1-entrance-to-reception",
+      "connects": ["L1-entrance", "L2-reception"],
+      "width_squares": 2,
+      "path": [[4, 5], [4, 6]],
+      "edge_type": "corridor",
+      "door_type": "none"
+    }
+  ],
+  "encounters": [
+    {
+      "id": "e1-guard-drakes",
+      "room_id": "L1-entrance",
+      "role": "guardian",
+      "enemy_types": ["guard drake"],
+      "enemy_sizes": ["medium"],
+      "count": 2
+    },
+    {
+      "id": "e2-cultists",
+      "room_id": "L2-reception",
+      "role": "combat",
+      "enemy_types": ["cultist (robed council agent)"],
+      "enemy_sizes": ["medium"],
+      "count": 4
+    }
+  ]
+}
