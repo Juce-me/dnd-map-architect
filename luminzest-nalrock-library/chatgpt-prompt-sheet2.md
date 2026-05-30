@@ -39,67 +39,48 @@ Do not make a decorative border that changes the playable area. The numbered lab
 
 ### Rooms
 
+**Keep this map SIMPLE and large-scale. Get the three room dimensions and the grid right first; use few, clearly-placed objects with lots of open floor. Do not clutter the rooms.**
+
 1. **L3-Reading (Grand Reading Hall) — ENTRY FROM RECEPTION (NORTH)**  
    Position: (0, 0) — top, rows 0–5  
    Size: 10 wide × 6 tall  
    Role: The party arrives here from the Reception Hall (Sheet 1, which stacks directly above). **The connection to the Reception is at the NORTH edge (top), not the south.**  
-   Features:
-   - **NORTH ENTRY — main doorway from the Reception (Sheet 1):** Cut a clear 2-square-wide ARCHWAY DOORWAY through the NORTH wall at columns 3–4, row 0 (top edge). It is an open stone gateway with a visible threshold on the floor of squares (3,0) and (4,0), opening to black/empty space beyond the top wall (the corridor back to the Reception). Render a few stone steps just inside it. This is the party's entry. **This doorway is the ONLY opening in the north wall** — the rest of the top wall is solid stone (lined with bookshelves and windows). Do NOT draw stairs running off the top edge of the image; draw a doorway/gateway set INTO the wall.
-   - Vast library hall with hundreds of bookshelves (heavy cover, dense throughout, 1×1 clusters; bookshelves do not block movement through squares but provide cover). Keep the bookshelves clear of squares (3,0) and (4,0) so the north doorway is not blocked.
-   - Reading tables and study desks (light cover, scattered throughout).
-   - High stone columns (partial cover, non-blocking, 1 square each, scattered).
-   - Small private reading alcoves (light cover, nooks along walls).
-   - Statues of famous scholars (decorative, non-blocking).
-   - **Secret Feature — ODD STATUE (HINT TO HIDDEN PASSAGE):** One statue among the many is visually distinct — unusual pose, material, or engraving. Marked at position (8, 3) approximately. Player investigation or Perception check (DC 13) reveals it can be manipulated/pushed to open a hidden passage leading down to Level 4 Hidden Archive (secret corridor, bypasses hazard transition).
-   - **Connection to Reception (Sheet 1):** NORTH stairs at columns 3–4, row 0 (top edge).
+   Features (sparse — mostly open floor):
+   - **NORTH ENTRY — main doorway from the Reception (Sheet 1):** Cut a clear 2-square-wide ARCHWAY DOORWAY through the NORTH wall at columns 3–4, row 0 (top edge). Open stone gateway with a visible floor threshold on squares (3,0) and (4,0), opening to black/empty space beyond the top wall. A few stone steps just inside. **This doorway is the ONLY opening in the north wall**; the rest of the top wall is solid stone. Do NOT draw stairs running off the top edge — draw a gateway set INTO the wall.
+   - A row of tall bookshelves along the EAST and WEST walls only (left and right edges). Leave the middle of the room open.
+   - 2–3 large reading tables in the open floor (light cover).
+   - 2 stone columns (around (2,3) and (7,3)), 1 square each.
+   - Keep squares (3,0) and (4,0) clear so the north doorway is not blocked.
    - **Connection to Hazard:** Corridor SOUTH at columns 3–4, between rows 5 and 6 (bottom edge).
-   - **Connection to Secret Passage:** Secret passage at (8, 6) leads to L4-Archive (8, 9).
+   - *DM note (do NOT draw):* one east-wall statue is the secret-passage hint; the passage itself is hidden and is NOT rendered on the map.
 
 2. **L3-L4-Hazard (Hazardous Transition)**  
-   Position: (0, 6) — center  
+   Position: (0, 6) — center, rows 6–8  
    Size: 10 wide × 3 tall  
-   Features:
-   - Steep stone staircase descending to Level 4 (architectural feature, non-tactical).
-   - Collapsed/broken floor tiles creating difficult terrain (scattered 5×5 area in center; see hazard details below).
-   - Unstable ceiling supports and ancient stonework (risk of falling debris; see hazard details below).
-   - Bioluminescent fungi patches (faint glow, non-tactical, atmospheric).
-   - **Hazards:**
-     - **Difficult Terrain (collapsed floor):** Central 5×5 area (approximately (2, 6) to (7, 9)) consists of cracked and uneven stones. Movement through = half speed; DC 10 Acrobatics check allows full-speed movement.
-     - **Falling Debris:** Random hazard, 1 in 6 chance per round. When triggered: all creatures in the hazard zone must make a DC 12 Dexterity save or take 1d6 falling stone damage. Visible cracks and loose stones telegraph the danger.
-   - **Connection to Reading:** Corridor north at (3, 5)–(3, 6).
-   - **Connection to Archive:** Stairs south at (3, 8)–(3, 9).
+   Features (sparse):
+   - Collapsed, cracked stone floor across most of the band — the defining feature. Broken, uneven tiles; a few loose rocks. No furniture, no clutter beyond rubble.
+   - **Connection to Reading:** Corridor NORTH at columns 3–4, between rows 5 and 6.
+   - **Connection to Archive:** Stairs SOUTH at columns 3–4, between rows 8 and 9.
+   - *DM note:* difficult terrain (DC 10 Acrobatics) + occasional falling debris (DC 12 Dex, 1d6). Telegraph with visible cracks; no need for extra detail.
 
 3. **L4-Archive (Hidden Archive Vault)**  
-   Position: (0, 9) — bottom  
+   Position: (0, 9) — bottom, rows 9–13  
    Size: 10 wide × 5 tall  
-   Features:
-   - Reinforced ancient vault chamber with high arched ceiling (architectural feature, non-tactical).
-   - Stone walls inscribed with runes and protective glyphs (non-tactical, lore, glow faintly when puzzle is active).
-   - Shelves with restricted manuscripts and tomes (light cover, scattered along walls).
-   - **Puzzle Chamber:** Four stone pedestals arranged in a small cluster, abstracted to **1 tactical square at position (4, 11)**. This represents the mechanical puzzle: party must place 4 correct books on pedestals in the correct order per a logic riddle. DM adjudicates the puzzle and books.
-   - **Encounter:** Construct guardian (stone golem or similar CR 5 construct) lies dormant near the vault entrance. **Trigger:** Incorrect puzzle solution awakens the construct, which attacks until defeated or puzzle is solved correctly. Correct solution does not trigger combat; vault opens peacefully.
-   - **Vault contents:** Original founding records, forbidden research, secret maps (mechanical purpose: quest objective; player reward).
-   - **Connections:** 
-     - Stairs from hazard at (3, 8)–(3, 9).
-     - Secret passage from L3-Reading at (8, 6)–(8, 9).
+   Features (sparse — open vault chamber):
+   - Reinforced stone vault; faint glowing runes along the walls (atmosphere only).
+   - A few low shelves against the EAST and WEST walls. Otherwise open floor.
+   - **Puzzle Chamber:** Four stone pedestals in a tight 2×2 cluster, occupying roughly the single square at (4, 11). This is the puzzle (DM-run). Render four short pillars; keep them compact.
+   - **Connection to Hazard:** Stairs NORTH at columns 3–4, between rows 8 and 9.
+   - **SOUTH/bottom wall (row 13) is SEALED** — one continuous carved stone wall with a central dwarven seal medallion. No doorway, no stairs, no gap.
+   - *DM note (do NOT draw):* a dormant construct guardian and the vault contents live here; do not render them.
 
-### Corridors
+### Corridors / Openings (only these — no others)
 
-1. **Corridor L3→Hazard** (c2-reading-to-hazard)  
-   Connects: L3-Reading (3, 6) to L3-L4-Hazard (3, 6).  
-   Width: 3 squares.  
-   Features: Plain stone walls, dim lighting, library entrance arch.
+1. **North entry doorway** — archway through the north wall at columns 3–4, row 0. Party's entry from the Reception.
+2. **Reading → Hazard** — corridor at columns 3–4, between rows 5 and 6. Width 2–3 squares.
+3. **Hazard → Archive** — stone staircase at columns 3–4, between rows 8 and 9. Width 2 squares.
 
-2. **Staircase Hazard→Archive** (c3-hazard-to-archive)  
-   Connects: L3-L4-Hazard (3, 8) to L4-Archive (3, 9).  
-   Width: 2 squares.  
-   Features: Stone staircase descending, magical rune warnings.
-
-3. **Secret Passage L3→L4** (c4-secret-passage)  
-   Connects: L3-Reading (8, 6) to L4-Archive (8, 9).  
-   Width: 1 square.  
-   Features: Hidden passage triggered by odd statue manipulation; bypasses hazard transition entirely. Show as a faint passage or hidden door on the map if visually appropriate.
-
+**The secret passage (odd statue → vault) is NOT drawn on the map. Do not render any hidden tunnel, faint passage, or side opening.**
 ---
 
 ## Tactical Requirements
@@ -107,11 +88,10 @@ Do not make a decorative border that changes the playable area. The numbered lab
 **NOTE:** The following tactical descriptions are for the DM's reference only. **Do not render monsters, enemies, or NPCs on the battlemap itself.** The map should show only the interior layout and tactical cover. Players will place tokens on the map during play to represent characters and enemies.
 
 ### Exploration: L3-Reading Hall
-- **Objective:** Explore vast shelves, discover hidden clues.
-- **Key Feature:** Odd statue at (8, 3) hints at secret passage. Visual distinctness (color, pose, material, engraving) should make it stand out to observant players without being obvious. **The statue itself should be rendered on the map; do not render the hidden passage mechanism—just the distinct statue.**
-- **Cover:** Dense bookshelves and reading tables provide good cover for scouting or stealth.
-- **Sightlines:** Columns and shelf clusters create partial sight-line breaks.
-- **Challenge:** Finding the secret passage requires investigation or Perception check (DC 13).
+- **Objective:** Explore the hall; find the hidden way down.
+- **Key Feature (DM-only):** One east-wall statue is the secret-passage hint. **Neither the statue-as-trigger nor the passage is drawn on the map** — the DM narrates it. Finding it requires investigation / Perception (DC 13). The passage bypasses the hazard.
+- **Cover:** Wall bookshelves and the few tables provide cover.
+- **Sightlines:** Open central floor with a couple of columns.
 
 ### Hazard: L3-L4 Transition
 - **Objective:** Navigate treacherous passage to reach vault.
@@ -146,15 +126,13 @@ Do not make a decorative border that changes the playable area. The numbered lab
 - **Clear walkable spaces** (stone floors, vault floor).
 - **Distinct walls, doors, staircases, and archways** visibly separated and labeled.
 - **North entry doorway** (L3): Draw a clear 2-square-wide archway doorway cut THROUGH the north wall at columns 3–4, row 0, with a visible floor threshold and a few stone steps just inside. It opens to dark/empty space beyond the top wall (the corridor back to the Reception). It is the party's entry and the ONLY opening in the north wall. Do NOT render stairs spilling off the top edge — render a gateway set into the wall. Keep squares (3,0) and (4,0) clear of bookshelves.
-- **Bookshelves** (L3) should be recognizable as cover, arranged in 1×1 clusters throughout, leaving walkable corridors between them.
-- **Decorative painted windows** (optional, L3-Reading): If appropriate to the aesthetic, scatter subtle painted or frescoed windows on the outer walls of the reading hall showing mountain vistas—painted murals giving the illusion of windows to the surface world of Nalrock. **These are purely decorative and must not block movement or grid squares.**
-- **Hazard zone** (L3-L4) should visibly show cracked floor tiles, unstable stonework, and loose debris. Central 5×5 area should appear damaged/difficult; surrounding areas are passable.
-- **Staircase** (L3→L4) should be clearly marked with visual stairs descending.
-- **Secret passage** (if rendered) should be hidden or very subtle at L3 (at odd statue location) and appear as a faint passage or hidden door leading down to L4.
-- **Pedestals** (L4) should be rendered as four distinct stone pillars clustered in one tactical square at (4, 11), or clearly labeled as "Puzzle Chamber."
-- **Vault entrance area:** Show space for the dormant construct location.
-- **Vault contents/shrine:** Shelves with manuscripts along walls; glowing runes on walls (faint, non-distracting).
-- **Playable grid squares** must remain readable; all combat spaces must be token-playable. Bookshelves, furniture, and pedestals should not fill entire squares—they provide cover without blocking movement.
+- **Keep it sparse and large-scale.** Few objects, lots of open floor. Prioritize correct room dimensions and a clean readable grid over decoration.
+- **Bookshelves** (L3): only along the EAST and WEST walls; leave the center open. Plus 2–3 reading tables and 2 columns.
+- **Hazard zone** (L3-L4): cracked, broken stone floor across the band with a few loose rocks. No furniture.
+- **Staircase** (L3→L4) should be clearly marked with visual stairs descending at columns 3–4.
+- **Pedestals** (L4): four short stone pillars in a tight 2×2 cluster around square (4, 11). Otherwise the vault is open, with a few low shelves on the east/west walls and faint wall runes.
+- **NO secret passage / hidden tunnel** anywhere on the map. Do not draw any faint passage, side opening, or hidden door.
+- **Playable grid squares** must remain readable; objects should sit within single squares and not crowd the floor.
 
 ---
 
@@ -165,14 +143,15 @@ Do not make a decorative border that changes the playable area. The numbered lab
 - Do NOT add extra rows or extra columns; the grid must be exactly 10×14.
 - Do NOT draw any art, furniture, shadow, or texture over the grid lines; the grid sits on top.
 - Do NOT add a large black void between rooms.
-- Do NOT omit grid lines on any square, including stair landings, archway interiors, secret passage entrances, corridor mouths, or dark areas.
+- Do NOT omit grid lines on any square, including stair landings, archway interiors, corridor mouths, or dark areas.
 - Do NOT paint door art, ornamental tiles, or texture fills over grid lines.
 - Do NOT create disconnected rooms or floating corridors.
 - Do NOT add extra rooms, doors, walls, pits, or blocked paths beyond the topology specified.
 - Do NOT add any opening, doorway, gate, or stairway on the outer walls except the single NORTH entry doorway at columns 3–4, row 0. The north wall (apart from that doorway), both side walls, and the SOUTH/bottom wall are solid stone. In particular the vault's south wall (bottom edge, row 13) is a sealed terminus — no exit there.
 - Do NOT render stairs running off the top edge of the image; the north entry is a doorway set INTO the north wall.
 - Do NOT place bookshelves, furniture, or debris so densely that tokens cannot stand in combat spaces or move through corridors.
-- Do NOT hide the staircase, secret passage entrance, or vault entrance in visual noise. Make them recognizable.
+- Do NOT hide the north doorway, the central staircases, or the vault in visual noise. Make them recognizable.
+- Do NOT crowd the rooms — keep them sparse and large-scale with open floor.
 - Do NOT crop the outer grid or use a decorative border that changes playable dimensions.
 - Do NOT move or resize rooms. Room positions, sizes, and connections are fixed.
 - Do NOT change the grid scale or square size.
@@ -192,19 +171,15 @@ After ChatGPT generates the map:
    - L3-L4-Hazard: (0, 6), 10×3 ✓
    - L4-Archive: (0, 9), 10×5 ✓
 5. **Confirm NORTH entry + sealed walls:** A 2-square archway doorway is cut through the north wall at columns 3–4, row 0 (threshold + steps inside), and it is the ONLY opening in the north wall — no stairs spill off the top edge. No stray openings on the side walls, and the vault's south/bottom wall (row 13) is solid with no exit ✓
-6. **Confirm corridors:**
-   - L3→Hazard at (3, 5)–(3, 6), width 3 ✓
-   - Hazard→L4 at (3, 8)–(3, 9), width 2 ✓
-   - Secret passage at (8, 6)–(8, 9), width 1 ✓
-7. **Confirm odd statue location:** Distinct statue at L3 (8, 3) area; visually unique ✓
-8. **Confirm hazard zone:** Central area of L3-L4 shows cracked/difficult terrain, ~5×5 ✓
-9. **Confirm vault features:** 
-   - Four pedestals at (4, 11) in L4-Archive ✓
-   - Construct dormant space near vault entrance ✓
-   - Glowing runes on walls (faint, non-obstructing) ✓
-10. **Confirm grid continuity:** Every square has visible grid lines, including stair landings, secret passage, and archway interiors ✓
-11. **Confirm encounter spaces:** Vault chamber is token-playable, corridors are passable ✓
-12. **Confirm print validity:** A3 portrait, 28 mm grid, 6 mm margins → 10×14 squares (280×392 mm grid). When rendered at 331 px/sq for 300 DPI, each square measures 28 mm on paper ✓
+6. **Confirm corridors (only these):**
+   - L3→Hazard at columns 3–4, rows 5–6, width 2–3 ✓
+   - Hazard→L4 stairs at columns 3–4, rows 8–9, width 2 ✓
+   - NO secret passage / hidden tunnel drawn anywhere ✓
+7. **Confirm hazard zone:** Cracked/broken floor across L3-L4 (rows 6–8); no furniture ✓
+8. **Confirm vault:** Four pedestals clustered at ~(4, 11); otherwise open floor with faint wall runes ✓
+9. **Confirm sparseness:** Rooms are uncluttered — bookshelves only on east/west walls, lots of open floor ✓
+10. **Confirm grid continuity:** Every square has visible grid lines, including stair landings and archway interiors ✓
+11. **Confirm print validity:** A3 portrait, 28 mm grid, 6 mm margins → 10×14 squares (280×392 mm grid). When rendered at 331 px/sq for 300 DPI, each square measures 28 mm on paper ✓
 
 ---
 

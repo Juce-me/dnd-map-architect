@@ -86,7 +86,7 @@
       "path": [[8, 6], [8, 9]],
       "edge_type": "secret passage",
       "door_type": "hidden (odd statue)",
-      "notes": ["bypass hazard transition", "requires investigation or Perception check DC 13"]
+      "notes": ["bypass hazard transition", "requires investigation or Perception check DC 13", "NOT drawn on the battlemap (DM reference only)"]
     }
   ],
   "encounters": [
