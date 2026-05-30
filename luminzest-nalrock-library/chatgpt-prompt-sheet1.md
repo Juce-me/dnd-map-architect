@@ -39,9 +39,10 @@ Do not make a decorative border that changes the playable area. The numbered lab
 
 ### Rooms
 
-1. **L1-Entrance (Entrance Garden)**  
-   Position: (0, 0) — top-left corner  
+1. **L1-Entrance (Enclosed Garden) — ISOLATED**  
+   Position: (0, 0) — top, rows 0–5  
    Size: 10 wide × 6 tall  
+   Role: Isolated, enclosed underground garden. **Dead-end** — its ONLY opening is a single door on its south wall into the Reception Hall. No exit to the surface, no other passages.  
    Features:
    - Enclosed underground garden beneath a very high vaulted stone ceiling (high ceilings do not affect grid).
    - Stone pathways and benches (non-tactical, descriptive; no movement impedance).
@@ -49,29 +50,39 @@ Do not make a decorative border that changes the playable area. The numbered lab
    - Dwarven statues (decorative, non-blocking, can provide light cover).
    - Dry fountain feature (non-tactical).
    - Overgrown but not wild (vegetation is sparse, does not fill squares).
-   - **Encounter:** 2 guard drakes (Medium size), scattered throughout, defending the entrance. Drakes are hostile on sight but do not pursue beyond this room.
-   - **Connection:** Corridor to L2-Reception at (3, 5)–(3, 6).
+   - Painted mountain murals on the enclosing walls.
+   - **Connection:** Single door on the south wall to L2-Reception at columns 3–4, between rows 5 and 6. This is the garden's only way in or out.
 
-2. **L2-Reception (Reception Hall)**  
-   Position: (0, 6) — center-bottom  
+2. **L2-Reception (Reception Hall) — MAIN ENTRANCE**  
+   Position: (0, 6) — rows 6–13  
    Size: 10 wide × 8 tall  
+   Role: The library's main entry hall. **The party enters here through the WEST entrance.**  
    Features:
+   - **WEST ENTRANCE:** Large entrance doors on the WEST wall (column 0, around rows 9–10), opening from the city outside. This is the library's main door and the party's entry point. Show a 2-square-wide doorway/threshold here.
    - Grand dwarven architecture (high columns and archways).
    - Stone columns throughout (partial cover, non-blocking, scattered; each ~1 square).
    - Large reception desk and visitor counters (heavy cover, 2×2 footprint each, scattered throughout).
    - Records cabinets (heavy cover, scattered 1×2 clusters).
    - Benches (light cover, scattered).
-   - Decorative murals on walls (non-tactical, descriptive).
+   - Decorative murals and painted mountain windows on walls (non-tactical, descriptive).
    - Dust-covered documents scattered on desks (non-tactical, lore).
-   - **Encounter:** 4 council cultists in red robes (Medium size, lightly armored), scattered behind desks and cabinets. Hostile to party. Defend the inner library entrance.
-   - **Connections:** Corridor back to L1-Entrance at (3, 6)–(3, 5); corridor north to L3-Reading at (3, 13)–(3, 14).
+   - **Connections:**
+     - West entrance door (column 0, rows 9–10) — from the city.
+     - North door to the isolated Enclosed Garden at columns 3–4, between rows 5 and 6.
+     - **SOUTH stairs down to Sheet 2** (Grand Reading Hall) at columns 3–4 on row 13 (bottom edge).
 
-### Corridors
+### Corridors / Openings
 
-1. **Corridor L1→L2** (c1-entrance-to-reception)  
-   Connects: L1-Entrance (3, 6) to L2-Reception (3, 6).  
+1. **Garden door** (c1-entrance-to-reception)  
+   Connects: L2-Reception (north wall) to L1-Enclosed Garden (south wall) at columns 3–4, between rows 5 and 6.  
    Width: 2 squares.  
-   Features: Plain stone walls, dim magical lanterns, dust.
+   Features: Single stone doorway; the garden's only access. Plain stone walls, dim lanterns, dust.
+
+2. **West entrance** (main door from the city)  
+   On the WEST wall of the Reception (column 0, rows 9–10). 2-square-wide threshold. Party's entry point onto the map.
+
+3. **South stairs to Sheet 2**  
+   On the SOUTH edge of the Reception (columns 3–4, row 13). Stairs descend to the Grand Reading Hall on Sheet 2.
 
 ---
 
@@ -79,26 +90,27 @@ Do not make a decorative border that changes the playable area. The numbered lab
 
 **NOTE:** The following encounter descriptions are for the DM's reference only. **Do not render monsters, enemies, or NPCs on the battlemap itself.** The map should show only the interior layout and tactical cover. Players will place tokens on the map during play to represent characters and enemies.
 
-### Encounter 1: Guard Drakes (L1-Entrance)
+### Encounter 1: Guard Drakes (Enclosed Garden — isolated, optional)
 - **Enemy count:** 2 medium guard drakes.
-- **Placement notes (DM reference):** Scattered throughout the garden, near entrance doors and among statues/flora.
-- **Behavior:** Territorial; attack on sight. Will not pursue into Reception Hall.
+- **Placement notes (DM reference):** Lairing in the isolated garden, among statues/flora. The garden is a dead-end side area off the Reception; this fight is optional unless the party opens the north door.
+- **Behavior:** Territorial; attack on sight. Will not pursue out of the garden.
 - **Tactical use of cover:** Light (benches, statues, fountain). Party can use vegetation and structures for movement and partial cover.
 - **Sightlines:** Open garden, good visibility.
-- **Objective:** Defeat drakes or pass through to corridors.
+- **Objective:** Clear the garden if explored (lore/loot); otherwise bypassable.
 
-### Encounter 2: Council Cultists (L2-Reception)
+### Encounter 2: Council Cultists (L2-Reception — main entry)
 - **Enemy count:** 4 medium robed cultists.
-- **Placement notes (DM reference):** Distributed around desks and cabinets; some use furniture for cover.
-- **Behavior:** Hostile; defend the hall and north passage.
+- **Placement notes (DM reference):** Distributed around desks and cabinets near the west entrance; some use furniture for cover.
+- **Behavior:** Hostile; defend the hall against intruders coming through the west door.
 - **Tactical use of cover:** Moderate (desks, counters, cabinets provide heavy cover; columns provide partial cover).
 - **Sightlines:** Columns and furniture create sight-line breaks and tactical positioning.
-- **Objective:** Defeat cultists to proceed north into Level 3.
+- **Objective:** Defeat cultists to reach the south stairs down to Level 3.
 
 ### Pacing
-- Entrance combat: Immediate threat.
-- Reception combat: Mid-complexity encounter with cover and cultist positioning.
-- Exit through north corridor leads to Level 3 (Sheet 2).
+- Entry: Party comes in through the WEST entrance into the Reception.
+- Reception combat: Main fight — cover and cultist positioning.
+- Optional garden detour (north door): isolated drake lair.
+- Exit: SOUTH stairs (row 13) descend to Level 3 (Sheet 2).
 
 ---
 
@@ -114,7 +126,9 @@ Do not make a decorative border that changes the playable area. The numbered lab
 - **Playable grid squares** must remain readable; tokens must fit safely in intended combat spaces. Desks and cabinets should not fill entire squares—arrange in 2×1 or 1×2 clusters, leaving walkable spaces.
 - **Hazards:** None in this sheet.
 - **Stairs, doors, and archways:** Show clearly; grid must be continuous across thresholds and archway openings.
-- **Stairs down to Level 3:** Position at north exit (3, 13–14) to indicate vertical transition.
+- **West entrance:** Render a clear 2-square-wide entrance doorway on the WEST wall of the Reception (column 0, rows 9–10) — the library's main door from the city.
+- **South stairs down to Level 3:** Position at the SOUTH edge of the Reception (columns 3–4, row 13) to indicate the descent to Sheet 2.
+- **Isolated garden:** The garden (rows 0–5) connects to the Reception by a single door on its south wall (columns 3–4, rows 5–6) and has no other openings.
 
 ---
 
@@ -140,14 +154,15 @@ After ChatGPT generates the map:
 
 1. **Count grid squares:** Confirm 10 wide × 14 tall.
 2. **Confirm room positions and sizes:**
-   - L1-Entrance: (0, 0), 10×6 ✓
+   - L1-Enclosed Garden: (0, 0), 10×6 ✓
    - L2-Reception: (0, 6), 10×8 ✓
-3. **Confirm corridors:** C1 at (3, 5)–(3, 6), width 2 ✓; north exit at (3, 13)–(3, 14) ✓
-4. **Confirm cover placement:** Desks, cabinets, columns visible but not blocking movement ✓
-5. **Confirm grid continuity:** Every square has visible grid lines, including door thresholds and archway interiors ✓
-6. **Confirm encounter spaces:** Combat areas are token-playable ✓
-7. **Confirm print validity:** A3 portrait, 28 mm grid, 6 mm margins → 10×14 squares (280×392 mm grid). When rendered at 331 px/sq for 300 DPI, each square measures 28 mm on paper ✓
+3. **Confirm openings:** West entrance on Reception west wall (col 0, rows 9–10) ✓; garden door at cols 3–4 between rows 5–6 ✓; south stairs to Sheet 2 at cols 3–4, row 13 ✓
+4. **Confirm garden is isolated:** Garden has exactly one opening (the south door to the Reception) and no other exits ✓
+5. **Confirm cover placement:** Desks, cabinets, columns visible but not blocking movement ✓
+6. **Confirm grid continuity:** Every square has visible grid lines, including door thresholds and archway interiors ✓
+7. **Confirm encounter spaces:** Combat areas are token-playable ✓
+8. **Confirm print validity:** A3 portrait, 28 mm grid, 6 mm margins → 10×14 squares (280×392 mm grid). When rendered at 331 px/sq for 300 DPI, each square measures 28 mm on paper ✓
 
 ---
 
-**This is Sheet 1 of 2.** After the party defeats the cultists in L2-Reception, they proceed north through the stairs into Sheet 2 (Level 3 Grand Reading Hall and Level 4 Hidden Archive).
+**This is Sheet 1 of 2.** The party enters through the WEST door into the Reception Hall, clears it, and descends the SOUTH stairs (row 13) into Sheet 2 (Level 3 Grand Reading Hall and Level 4 Hidden Archive). The Enclosed Garden is an isolated optional detour off the Reception's north door.

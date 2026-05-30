@@ -1,0 +1,157 @@
+{
+  "identity": {
+    "name": "The Sealed Codex Vault",
+    "dungeon_type": "underground arcane library",
+    "architectural_style": "cut stone with carved arcane reliefs",
+    "civilization": "pre-dynastic scholar order, abandoned",
+    "atmosphere": "cold lamplight, dust-shrouded shelves, faint glyph-glow from the forbidden hall",
+    "corruption_state": "long abandoned, partially warded",
+    "gameplay_focus": ["combat", "exploration", "boss fight"],
+    "narrative_role": "objective dungeon culminating in the forbidden hall"
+  },
+  "technical": {
+    "grid_type": "square",
+    "tile_scale_ft": 5,
+    "width_squares": 16,
+    "height_squares": 22,
+    "image_dimensions_px": [4800, 6600],
+    "vtt_target": "FoundryVTT",
+    "print": {
+      "enabled": true,
+      "paper": "A3",
+      "physical_grid_inches": 1,
+      "margin_inches": 0.25,
+      "split_pages": true
+    }
+  },
+  "tactical": {
+    "party_level": 5,
+    "party_size": 4,
+    "largest_creature_size": "gargantuan",
+    "largest_creature_traversal": {"required": false},
+    "combat_density": "medium",
+    "stealth_focus": "none",
+    "ranged_combat_viability": "high",
+    "verticality_requirements": "stairs"
+  },
+  "rooms": [
+    {
+      "id": "garden",
+      "name": "Sunken Entrance Garden",
+      "type": "entry",
+      "x": 1,
+      "y": 1,
+      "width": 14,
+      "height": 4,
+      "notes": [
+        "open-air sunken courtyard above the library entrance",
+        "two stone planters and two ancient trees give partial and full cover",
+        "central stair descends to reception"
+      ]
+    },
+    {
+      "id": "reception",
+      "name": "Scriptorium Reception",
+      "type": "transition",
+      "x": 4,
+      "y": 6,
+      "width": 8,
+      "height": 3,
+      "notes": [
+        "stone counter spans the chamber center as half cover",
+        "two index cabinets along east and west walls",
+        "iron-bound double door on south wall to the main hall"
+      ]
+    },
+    {
+      "id": "main_hall",
+      "name": "Hall of Open Tomes",
+      "type": "combat",
+      "x": 1,
+      "y": 10,
+      "width": 14,
+      "height": 4,
+      "notes": [
+        "two parallel bookshelf rows act as full cover with deliberate gaps",
+        "two reading tables provide half cover and ranged lanes",
+        "wide ornate archway on south wall opens to the forbidden hall"
+      ]
+    },
+    {
+      "id": "forbidden_hall",
+      "name": "Forbidden Hall of Chained Tomes",
+      "type": "boss",
+      "x": 1,
+      "y": 14,
+      "width": 14,
+      "height": 8,
+      "notes": [
+        "huge sealed door on the south wall is the objective; cannot be opened until the construct is destroyed",
+        "four stone pillars break sightlines and provide hard cover",
+        "chained tome lecterns at the corners radiate occasional unstable magic",
+        "the 4 by 4 construct begins standing directly before the sealed door"
+      ]
+    }
+  ],
+  "corridors": [
+    {
+      "id": "c1",
+      "connects": ["garden", "reception"],
+      "width_squares": 3,
+      "path": [[8, 5], [8, 6]],
+      "edge_type": "stairs",
+      "door_type": "open stone archway with descending stair"
+    },
+    {
+      "id": "c2",
+      "connects": ["reception", "main_hall"],
+      "width_squares": 3,
+      "path": [[8, 9], [8, 10]],
+      "edge_type": "corridor",
+      "door_type": "iron-bound stone double door, unlocked"
+    },
+    {
+      "id": "c3",
+      "connects": ["main_hall", "forbidden_hall"],
+      "width_squares": 5,
+      "path": [[8, 14], [8, 14]],
+      "edge_type": "open archway",
+      "door_type": "ornate wide archway on shared wall, no door"
+    }
+  ],
+  "encounters": [
+    {
+      "id": "e1",
+      "room_id": "garden",
+      "role": "skirmish",
+      "enemy_sizes": ["medium"],
+      "notes": [
+        "optional: 2 awakened stone gargoyles perched on the planters (CR 2 each)",
+        "trees and planters give the party real cover choices on approach"
+      ]
+    },
+    {
+      "id": "e2",
+      "room_id": "main_hall",
+      "role": "skirmish",
+      "enemy_sizes": ["medium", "large"],
+      "notes": [
+        "3 flying swords or animated tomes (CR 1/4 each) plus 1 specter librarian (CR 1) drift between the shelves",
+        "bookshelves break line of sight; reading tables anchor the center lanes",
+        "tuned as a medium encounter to drain resources before the boss"
+      ]
+    },
+    {
+      "id": "e3",
+      "room_id": "forbidden_hall",
+      "role": "boss",
+      "enemy_sizes": ["gargantuan"],
+      "notes": [
+        "the Bookbound Sentinel: helmed-horror frame welded to a 4x4 stone slab, CR 5 to CR 6 single boss for level 5 party of 4",
+        "starts adjacent to the sealed south door it guards",
+        "lair-style reactions: chained lecterns can be activated as an action to slow the construct or hurl arcane bolts",
+        "pillars allow line-of-sight breaks against the construct's ranged attacks"
+      ]
+    }
+  ]
+}

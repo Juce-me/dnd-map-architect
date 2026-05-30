@@ -28,25 +28,25 @@
   "rooms": [
     {
       "id": "L1-entrance",
-      "name": "Entrance Garden",
-      "type": "entry",
+      "name": "Enclosed Garden",
+      "type": "exploration",
       "x": 0,
       "y": 0,
       "width": 10,
       "height": 6,
       "secret": false,
-      "notes": ["guarded by drakes", "high vaulted ceiling", "stone pathways and benches"]
+      "notes": ["isolated enclosed underground garden", "dead-end accessed only from the Reception (single door, south)", "high vaulted ceiling, stone pathways, benches, dry fountain"]
     },
     {
       "id": "L2-reception",
       "name": "Reception Hall",
-      "type": "combat",
+      "type": "entry",
       "x": 0,
       "y": 6,
       "width": 10,
       "height": 8,
       "secret": false,
-      "notes": ["defended by council cultists", "columns and desks for cover", "transition to Level 3"]
+      "notes": ["main library entry via WEST entrance door (from the city)", "columns and desks for cover", "south stairs (row 13) descend to Sheet 2 (Grand Reading Hall)", "isolated garden accessed via north door"]
     }
   ],
   "corridors": [

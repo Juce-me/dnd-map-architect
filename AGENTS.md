@@ -225,7 +225,7 @@ When the user corrects your approach, append a one-line rule here before ending 
 
 - When reviewing generated battlemap images, inspect every door, stair, and archway square individually — image models routinely drop the grid on door-threshold squares even when the rest of the grid is continuous.
 - Battlemap prompts must explicitly state: never render monsters, enemies, or NPCs on the map. Interior layout, cover, and atmospheric details only; players place tokens during play.
-- Battlemap prompts must include explicit numbered coordinate grid labels (columns 0–N, rows 0–M) and emphasize grid line visibility — models generate more accurate, playable maps when coordinates are verbally reinforced in the prompt structure.
+- Battlemap prompts must lead with a numbered coordinate grid (columns 0–N on top, rows 0–M on left), exact column/row counts, and grid lines drawn ABOVE all art/furniture/shadows — stated as the most-important requirement and re-checked first in the post-generation checklist. Image models reliably honor numbered, explicitly-counted grids over vaguely-described ones.
 
 ---
 

@@ -30,12 +30,13 @@
       "id": "L3-reading",
       "name": "Grand Reading Hall",
       "type": "exploration",
+      "is_entrance": true,
       "x": 0,
       "y": 0,
       "width": 10,
       "height": 6,
       "secret": false,
-      "notes": ["vast shelves and reading tables", "odd statue hints secret passage", "high columns and alcoves for cover"]
+      "notes": ["entry from Reception via NORTH stairs (Sheet 1 stacks above; connection at top edge, row 0)", "vast shelves and reading tables", "odd statue hints secret passage", "high columns and alcoves for cover", "south corridor (row 5) leads down to the Hazardous Transition"]
     },
     {
       "id": "L3-L4-hazard",

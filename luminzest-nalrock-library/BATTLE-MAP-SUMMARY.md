@@ -14,15 +14,19 @@
 
 ---
 
-## Sheet 1: Levels 1–2 (Entrance Garden + Reception Hall)
+## Sheet 1: Levels 1–2 (Enclosed Garden + Reception Hall)
 
 | Room | Position | Size | Role | Encounter |
 |------|----------|------|------|-----------|
-| L1-Entrance | (0, 0) | 10×6 | Entry/Guardian | 2 guard drakes |
-| L2-Reception | (0, 6) | 10×8 | Combat | 4 council cultists (red robes) |
+| L2-Reception | (0, 6) | 10×8 | **Main entry (WEST door)** | 4 council cultists (red robes) |
+| L1-Garden | (0, 0) | 10×6 | Isolated side-room | 2 guard drakes (optional) |
 
-**Corridor:** 2-square-wide passage from L1 south corridor to L2 north corridor.  
-**Tactics:** Light to moderate cover (benches, statues, desks). Both encounters are straightforward—drakes in entry, cultists defending inner library.
+**Entrances & connections:**
+- **West entrance** (Reception west wall, col 0, rows 9–10) — library's main door from the city; party's entry point.
+- **Garden door** (cols 3–4, rows 5–6) — single door; the isolated garden's only access, off the Reception's north wall.
+- **South stairs** (Reception, cols 3–4, row 13) — descend to Sheet 2.
+
+**Tactics:** Party enters west into the Reception (main cultist fight). The Enclosed Garden is an isolated dead-end detour (optional drake lair). Light to moderate cover (benches, statues, desks).
 
 ---
 
@@ -34,8 +38,9 @@
 | L3-L4-Hazard | (0, 6) | 10×3 | Hazard transition | Difficult terrain + falling debris (DC 10 Acrobatics, DC 12 Dex save) |
 | L4-Archive | (0, 9) | 10×5 | Puzzle + Boss | Construct guardian (triggered on wrong puzzle solution) |
 
-**Corridors:**
-- L3→Hazard: 3-square-wide main corridor.
+**Entrances & connections:**
+- **North entry** (Reading Hall north wall, cols 3–4, row 0) — stairs up to the Reception (Sheet 1 stacks above). This is where the party enters Sheet 2.
+- L3→Hazard: 3-square-wide corridor, SOUTH edge of the Reading Hall.
 - Hazard→L4: 2-square-wide staircase.
 - L3→L4 (secret): 1-square-wide hidden passage behind odd statue; bypasses hazard.
 
@@ -46,12 +51,12 @@
 ## Topology Graph
 
 ```
-L1-Entrance (drakes)
-    ↓ (corridor)
-L2-Reception (cultists)
-    ↓ (stairs north)
-L3-Reading (exploration + secret hint)
-    ├→ (main corridor) L3-L4-Hazard (difficult terrain)
+[CITY] → WEST entrance
+    ↓
+L2-Reception (cultists)  ──north door──  L1-Enclosed Garden (isolated, optional drakes)
+    ↓ (SOUTH stairs, Sheet 1 → Sheet 2)
+L3-Reading (exploration + secret hint)   ← entry at NORTH edge
+    ├→ (south corridor) L3-L4-Hazard (difficult terrain)
     │   ↓ (staircase)
     │   L4-Archive (puzzle + construct)
     └→ (secret passage) L4-Archive (directly, bypassing hazard)
@@ -93,10 +98,10 @@ Two detailed prompts ready to paste into ChatGPT:
 ## Key Features by Sheet
 
 ### Sheet 1: Combat-Focused
-- ✓ Clear tactical encounters (drakes, cultists).
+- ✓ West entrance into the Reception (main cultist fight).
+- ✓ Isolated Enclosed Garden as an optional dead-end detour (drake lair).
 - ✓ Light to moderate cover (desks, columns, statues).
-- ✓ Open sightlines for ranged combat.
-- ✓ Single main path (north exit to Level 3).
+- ✓ South stairs descend to Level 3 (Sheet 2).
 
 ### Sheet 2: Exploration + Puzzle + Hazard + Boss
 - ✓ Hidden secret (odd statue → secret passage).
@@ -148,8 +153,8 @@ When printed:
 
 | Encounter | Location | Enemy | Count | Size | Difficulty | Trigger | Objective |
 |-----------|----------|-------|-------|------|------------|---------|-----------
-| Guard Drakes | L1-Entrance | Drake | 2 | Medium | Moderate | On entry | Defeat or bypass |
-| Council Cultists | L2-Reception | Robed Agent | 4 | Medium | Moderate | After entry | Defeat to proceed |
+| Council Cultists | L2-Reception (west entry) | Robed Agent | 4 | Medium | Moderate | On entry through west door | Defeat to reach south stairs |
+| Guard Drakes | L1-Enclosed Garden (isolated) | Drake | 2 | Medium | Moderate | Optional — only if garden door opened | Clear for lore/loot, or skip |
 | Hazard Transition | L3-L4 | Environmental | — | — | Hard | Navigating stairs | Survive cracked floor, falling debris |
 | Construct Guardian | L4-Archive | Golem/Construct | 1 | Medium | Hard | Wrong puzzle | Defeat or solve puzzle correctly |
 
