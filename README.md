@@ -92,6 +92,10 @@ A typical session walks through six steps:
 
 See [`skills/dnd-map-architect/examples/worked-output.md`](skills/dnd-map-architect/examples/worked-output.md) for a complete end-to-end example, including the JSON spec, topology graph, validator report, and final image prompt.
 
+For a real two-sheet map with generated demo renders, see the [Great Library of Nalrock worked example](examples/luminzest-nalrock-library/README.md) — validated specs, copy/paste prompts, and example ChatGPT output.
+
+[<img src="examples/luminzest-nalrock-library/nalrock-sheet1.png" width="320" alt="Nalrock Sheet 1 render"> <img src="examples/luminzest-nalrock-library/nalrock-sheet2.png" width="320" alt="Nalrock Sheet 2 render">](examples/luminzest-nalrock-library/README.md)
+
 ## Verify The Skill
 
 From the repository root:
