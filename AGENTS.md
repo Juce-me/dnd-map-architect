@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Template version: 2026-05-21
+Template version: 2026-05-31
 
 Drop-in operating instructions for coding agents. Read this file before every task.
 
@@ -28,6 +28,7 @@ These rules override everything else in this file when in conflict:
 3. **Never fabricate.** Not file paths, not commit hashes, not API names, not test results, not library functions. If you don't know, read the file, run the command, or say "I don't know, let me check."
 4. **Stop when confused.** If the task has two plausible interpretations, ask. Do not pick silently and proceed.
 5. **Touch only what you must.** Every changed line must trace directly to the user's request. No drive-by refactors, reformatting, or "while I was in there" cleanups.
+6. **Do not commit local or personal data.** Use repo-relative paths in committed files. Never commit absolute local paths, real emails, local machine usernames, hostnames, secrets, tokens, or other user-specific data; redact or replace them with placeholders.
 
 ---
 
@@ -36,7 +37,7 @@ These rules override everything else in this file when in conflict:
 **Goal: understand the problem and the codebase before producing a diff.**
 
 - State your plan in one or two sentences before editing. For anything non-trivial, produce a numbered list of steps with a verification check for each.
-- Do not create persistent agent plan files unless explicitly needed; when needed, use `docs/agents/` per `docs/agents.md`, not `docs/superpowers/`.
+- Do not create persistent agent plan files unless explicitly needed; when needed, use `docs/agents/` per `docs/AGENTS.md`, not `docs/superpowers/`.
 - If Superpowers is active, use the relevant Superpowers skills for planning and execution. Use `writing-plans` for implementation plans, then `subagent-driven-development` when available or `executing-plans` for plan execution.
 - Read the files you will touch. Read the files that call the files you will touch. Claude Code: use subagents for exploration so the main context stays clean.
 - Match existing patterns in the codebase. If the project uses pattern X, use pattern X, even if you'd do it differently in a greenfield repo.
@@ -73,7 +74,7 @@ The test: would a senior engineer reading the diff call this overcomplicated? If
 - Do not delete pre-existing dead code unless asked. If you notice it, mention it in the summary.
 - Do clean up orphans created by your own changes (unused imports, variables, functions your edit made obsolete).
 - Match the project's existing style exactly: indentation, quotes, naming, file layout.
-- Put reusable project rules at the highest applicable level. Subfolder `AGENTS.md` files may add stricter constraints but must not redefine artifact naming, location, or other rules set by the root template or `docs/agents.md` — if a different scheme is genuinely needed, change it at the template level so every project stays consistent. Keep `CLAUDE.md` and `GEMINI.md` symlinked to the local `AGENTS.md`.
+- Put reusable project rules at the highest applicable level. Subfolder `AGENTS.md` files may add stricter constraints but must not redefine artifact naming, location, or other rules set by the root template or `docs/AGENTS.md` — if a different scheme is genuinely needed, change it at the template level so every project stays consistent. Keep `CLAUDE.md` and `GEMINI.md` symlinked to the local `AGENTS.md`.
 - Place new files in the appropriate top-level subfolder (e.g., `assets/` for static assets, `scripts/` for tooling and automation, `src/` for sources, `tests/` for tests, `docs/` for documentation) instead of the project root. If the project has an established layout, follow it; otherwise use these defaults. Create a folder only when adding its first real file. Do not commit empty placeholders, `.keep` files, or scaffold directories.
 
 The test: every changed line traces directly to the user's request. If a line fails that test, revert it.
@@ -107,7 +108,7 @@ For every task:
 - Never report "done" based on a plausible-looking diff alone. Plausibility is not correctness.
 - When debugging, address root causes, not symptoms. Suppressing the error is not fixing the error.
 - For UI changes, verify visually: screenshot before, screenshot after, describe the diff.
-- For Python work, always use a project-local virtual environment. Prefer an existing `.venv`; create `.venv` if missing before installing dependencies or running Python tools. Do not install packages into system Python.
+- Run project commands through the project-local environment or pinned runtime manager whenever the toolchain supports it. For Python, prefer an existing `.venv`; create `.venv` if missing before installing dependencies or running Python-based install, build, test, lint/typecheck, or local-run commands. Use `.venv/bin/python -m ...` or activate `.venv` before invoking Python tools, and never install packages into system Python. For Node/npm, use the repo-pinned runtime such as Volta (`node`, `npm`, `npx`) when configured instead of forcing commands through `.venv`.
 - Use CLI tools (gh, aws, gcloud, kubectl) when they exist. They are more context-efficient than reading docs or hitting APIs unauthenticated.
 - When reading logs, errors, or stack traces, read the whole thing. Half-read traces produce wrong fixes.
 
@@ -168,7 +169,7 @@ For significant misses, regressions, or repeated mistakes:
 
 - Review existing postmortems before touching related code.
 - Follow `postmortem/AGENTS.md` when creating or updating postmortems.
-- Follow `docs/agents.md` when creating or updating agent work artifacts such as feature plans, prompt notes, bugfix investigations, or execution summaries.
+- Follow `docs/AGENTS.md` when creating or updating agent work artifacts such as feature plans, prompt notes, bugfix investigations, or execution summaries.
 - Keep `README.md`, `AGENTS.md`, and `postmortem/README.md` aligned when workflow or structure changes.
 
 Boris Cherny (creator of Claude Code) keeps his team's file around 100 lines. Under 300 is a good ceiling. Over 500 and you are fighting your own config.
@@ -194,15 +195,15 @@ Boris Cherny (creator of Claude Code) keeps his team's file around 100 lines. Un
 No `package.json`, `pyproject.toml`, `Cargo.toml`, or `Makefile` exists in this project yet. Add verified commands here when the project adds them.
 
 ### Layout
-- Project root: `/Users/juce/Documents/devs/dnd-map-architect`
+- Project root: repository root (`dnd-map-architect/`)
 - Skill source: `skills/dnd-map-architect/`
 - Tests: `skills/dnd-map-architect/tests/`
-- Docs: `docs/agents.md` defines agent work artifact rules and doc-review criteria; `postmortem/` contains the postmortem workflow.
+- Docs: `docs/AGENTS.md` defines agent work artifact rules and doc-review criteria; `postmortem/` contains the postmortem workflow.
 
 ### Conventions
 - Reusable rules and design guidance belong at the highest applicable `AGENTS.md`; subfolder `AGENTS.md` files are for local constraints only.
 - Keep `AGENTS.md`, `CLAUDE.md`, and `GEMINI.md` aligned at the root and in subfolders; `CLAUDE.md` and `GEMINI.md` should point to the local `AGENTS.md`.
-- Agent work artifacts under `docs/agents/` use the `STATUS-summary.md` (or `STATUS-YYYY-MM-DD-summary.md`) naming defined in `docs/agents.md`. Subfolder `AGENTS.md` files cannot redefine this scheme.
+- Agent work artifacts under `docs/agents/` use the `STATUS-summary.md` (or `STATUS-YYYY-MM-DD-summary.md`) naming defined in `docs/AGENTS.md`. Subfolder `AGENTS.md` files cannot redefine this scheme.
 - TODO: Add additional project conventions after they are visible in code or config.
 
 ### Repo-specific constraints
@@ -220,12 +221,15 @@ No `package.json`, `pyproject.toml`, `Cargo.toml`, or `Makefile` exists in this 
 - Add a new line only when the user corrects the agent and the correction is likely to recur.
 - Tighten an existing line instead of adding a near-duplicate.
 - Delete stale learnings when the underlying issue goes away.
+- Use each project's pinned local runtime manager for project commands: `.venv` for Python, Volta for Node/npm when configured.
+- When changing this template, update `Template version` in `AGENTS.md` to the change date.
 
 When the user corrects your approach, append a one-line rule here before ending the session. Write it concretely ("Always use X for Y"), never abstractly ("be careful with Y"). If an existing line already covers the correction, tighten it instead of adding a new one. Remove lines when the underlying issue goes away (model upgrades, refactors, process changes).
 
 - When reviewing generated battlemap images, inspect every door, stair, and archway square individually — image models routinely drop the grid on door-threshold squares even when the rest of the grid is continuous.
 - Battlemap prompts must explicitly state: never render monsters, enemies, or NPCs on the map. Interior layout, cover, and atmospheric details only; players place tokens during play.
 - Battlemap prompts must lead with a numbered coordinate grid (columns 0–N on top, rows 0–M on left), exact column/row counts, and grid lines drawn ABOVE all art/furniture/shadows — stated as the most-important requirement and re-checked first in the post-generation checklist. Image models reliably honor numbered, explicitly-counted grids over vaguely-described ones.
+- When working in this project, use repository-relative paths in shell commands, scripts, and committed files; never absolute machine paths such as `/Users/...`.
 
 ---
 
