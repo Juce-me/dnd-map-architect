@@ -187,9 +187,9 @@ Boris Cherny (creator of Claude Code) keeps his team's file around 100 lines. Un
 ### Commands
 - Install: TODO: no `package.json`, `pyproject.toml`, `Cargo.toml`, or `Makefile` exists yet.
 - Build: TODO: no `package.json`, `pyproject.toml`, `Cargo.toml`, or `Makefile` exists yet.
-- Test skill validator: `.venv/bin/python skills/dnd-map-architect/tests/test_validate_dungeon_spec.py`
-- Validate bundled example: `.venv/bin/python skills/dnd-map-architect/scripts/validate_dungeon_spec.py skills/dnd-map-architect/examples/valid-dungeon-spec.json`
-- Lint/typecheck: `.venv/bin/python -m py_compile skills/dnd-map-architect/scripts/validate_dungeon_spec.py skills/dnd-map-architect/tests/test_validate_dungeon_spec.py`
+- Test skill validators: `.venv/bin/python skills/dnd-map-architect/tests/test_validate_dungeon_spec.py` and `.venv/bin/python skills/dnd-map-architect/tests/test_validate_overview_spec.py`
+- Validate bundled examples: `.venv/bin/python skills/dnd-map-architect/scripts/validate_dungeon_spec.py skills/dnd-map-architect/examples/valid-dungeon-spec.json` and `.venv/bin/python skills/dnd-map-architect/scripts/validate_overview_spec.py skills/dnd-map-architect/examples/valid-overview-spec.json`
+- Lint/typecheck: `.venv/bin/python -m py_compile skills/dnd-map-architect/scripts/validate_dungeon_spec.py skills/dnd-map-architect/scripts/validate_overview_spec.py skills/dnd-map-architect/tests/test_validate_dungeon_spec.py skills/dnd-map-architect/tests/test_validate_overview_spec.py`
 - Run locally: no application runtime entrypoint has been verified yet.
 
 No `package.json`, `pyproject.toml`, `Cargo.toml`, or `Makefile` exists in this project yet. Add verified commands here when the project adds them.

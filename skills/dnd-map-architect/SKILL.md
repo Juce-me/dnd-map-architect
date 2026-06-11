@@ -1,11 +1,16 @@
 ---
 name: dnd-map-architect
-description: Use when designing a dungeon, cave, fortress, lair, encounter map, printable battlemap, VTT map, terrain-module layout, or image-generation prompt for tabletop RPG combat.
+description: Use when designing a dungeon, cave, fortress, lair, encounter map, printable battlemap, VTT map, terrain-module layout, overview or zoom-out map of a dungeon complex, city, settlement, region, or world, or an image-generation prompt for tabletop RPG maps.
 ---
 
 # DND Map Architect
 
 Use this skill to create Dungeons & Dragons battlemaps that are playable first and attractive second. Never start with image generation. Always produce and validate a logical dungeon plan before writing or using an image prompt.
+
+## Map Modes
+
+- **Battlemap mode** (tactical encounter maps): follow the Required Workflow below.
+- **Overview mode** (zoom-out schemes: whole dungeon or site, settlement, region, world): read `references/overview-rules.md` plus exactly one scale file (`overview-site.md`, `overview-settlement.md`, `overview-region.md`, `overview-world.md`), then follow the Overview Workflow.
 
 ## Required Workflow
 
@@ -18,6 +23,15 @@ Use this skill to create Dungeons & Dragons battlemaps that are playable first a
 7. **Image generation**: Use the active image tool only after the user approves or requests generation.
 8. **Post-generation validation**: Review the generated map against topology, grid, tactical, and print constraints. Do not accept a pretty but unplayable result.
 9. **Correction loop**: Produce targeted correction prompts and updated validation notes until the map is usable.
+
+## Overview Workflow
+
+1. **Overview intake**: Pick the scale level from the ladder in `references/overview-rules.md`; ask the scale file's intake questions.
+2. **JSON overview specification**: Build a spec matching the shape in `references/overview-rules.md`: scale, grid, scale bar, print target, features, and children with real-world footprints.
+3. **Composition pass**: Place features and child blocks or markers; verify the scale chain math (block = ceil of footprint / unit_per_cell, marker when smaller than one cell).
+4. **Validation pass**: Run `scripts/validate_overview_spec.py` against the spec. Treat errors as blockers, exactly as in battlemap mode.
+5. **Image prompt generation**: Use the scale file's prompt template only when validation passes; otherwise output blocker corrections.
+6. **Image generation, post-generation validation, correction loop**: Follow battlemap mode steps 7-9 using the scale file's post-generation checklist.
 
 ## Operating Rules
 
@@ -52,6 +66,12 @@ Produce these artifacts for each full map request:
 - `references/prompt-templates.md`: Prompt templates and correction prompt patterns.
 - `examples/valid-dungeon-spec.json`: Valid JSON spec accepted by the bundled validator.
 - `examples/worked-output.md`: Example complete artifact set.
+- `references/overview-rules.md`: Scale ladder, scale chain, scale bar, and print math shared by all overview maps.
+- `references/overview-site.md`: Site (dungeon complex) overview intake and prompts.
+- `references/overview-settlement.md`: Settlement overview intake and prompts.
+- `references/overview-region.md`: Region hex-map intake and prompts.
+- `references/overview-world.md`: World atlas intake and prompts.
+- `examples/valid-overview-spec.json`: Valid overview spec accepted by the bundled overview validator.
 
 ## Validator
 
@@ -59,6 +79,12 @@ Run the bundled validator on JSON specs from the project-local virtual environme
 
 ```bash
 .venv/bin/python skills/dnd-map-architect/scripts/validate_dungeon_spec.py skills/dnd-map-architect/examples/valid-dungeon-spec.json
+```
+
+For overview (zoom-out) specs, run the overview validator the same way:
+
+```bash
+.venv/bin/python skills/dnd-map-architect/scripts/validate_overview_spec.py skills/dnd-map-architect/examples/valid-overview-spec.json
 ```
 
 If the skill is installed outside this repo, use the active environment's `python` with the same script path. Treat validator errors as blockers. Validator warnings require an explicit user-visible note or a spec adjustment. The validator provides deterministic checks; it does not replace tactical judgment or post-generation image review.
