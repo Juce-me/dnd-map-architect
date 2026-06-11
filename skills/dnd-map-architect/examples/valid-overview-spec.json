@@ -1,0 +1,38 @@
+{
+  "map_kind": "overview",
+  "identity": {
+    "name": "Ember Archive Site Plan",
+    "overview_type": "dungeon complex"
+  },
+  "scale": {"level": "site", "unit_per_cell": 10},
+  "technical": {
+    "grid_type": "square",
+    "width_cells": 14,
+    "height_cells": 10,
+    "image_dimensions_px": [1400, 1000],
+    "scale_bar": {"length_cells": 5, "label_units": 50},
+    "print": {
+      "enabled": true,
+      "paper": "A3",
+      "physical_grid_mm": 28,
+      "margin_mm": 6,
+      "split_pages": false
+    }
+  },
+  "features": [
+    {"id": "approach", "name": "Approach Road", "kind": "route", "x": 0, "y": 9, "width": 14, "height": 1}
+  ],
+  "children": [
+    {
+      "id": "ember-archive",
+      "name": "Ember Archive",
+      "level": "battlemap",
+      "representation": "block",
+      "x": 1,
+      "y": 0,
+      "footprint": {"width": 120, "height": 90, "unit": "ft"},
+      "block": {"width": 12, "height": 9},
+      "spec_path": "valid-dungeon-spec.json"
+    }
+  ]
+}
