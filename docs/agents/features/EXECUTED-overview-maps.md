@@ -1,4 +1,4 @@
-Status: planned
+Status: executed
 Type: feature
 Author: Juce
 
@@ -181,3 +181,25 @@ Execute via subagent-driven development (per user request): one subagent per
 scale reference file working from the committed `overview-rules.md`, one for
 the validator + tests (TDD), then an integration review. The implementation
 plan will be a sibling artifact in this folder.
+
+## Outcome
+
+Implemented with changes. The test suite grew from the planned 35 to 38 tests:
+a post-review commit added coverage for the flat-top hex print-fit axis swap,
+marker out-of-bounds placement, and duplicate child ids. Two template
+placeholders are intentionally outside the validated spec shape: `{dpi}` falls
+back to the 300 DPI default in `overview-rules.md`, and `{atmosphere}` in
+`overview-site.md` is filled from conversation context (the validator ignores
+extra identity fields). Everything else shipped as planned.
+
+Doc Review Criteria checked for SKILL.md, AGENTS.md section 10, and the five
+new reference files: terminology is consistent (cell, scale ladder,
+block/marker, scale bar used uniformly), documented commands and examples were
+run and pass, primary flows (battlemap mode vs overview mode) are described
+end-to-end, and no secrets, machine paths, or personal data appear. Backend/API
+and security/privacy dimensions are not applicable to these docs.
+
+## Current Accuracy
+
+Accurate as of execution. The shipped code, references, and tests are the
+source of truth; see `EXECUTED-overview-maps-plan.md` for the task-level record.

@@ -1,4 +1,4 @@
-Status: planned
+Status: executed
 Type: feature
 Author: Juce
 
@@ -12,7 +12,7 @@ Author: Juce
 
 **Tech Stack:** Python 3 stdlib (json, math, argparse, unittest), Markdown skill references. Run all Python through `.venv` (create with `python3 -m venv .venv` if missing; no dependencies needed).
 
-**Spec:** `PLANNED-overview-maps.md` (sibling artifact; rename to `EXECUTED-*` in Task 10).
+**Spec:** `EXECUTED-overview-maps.md` (sibling artifact; renamed in Task 10).
 
 Branch: all tasks run on `feat/overview-map-scales`. Use repo-relative paths in all committed files and commands.
 
@@ -1712,3 +1712,17 @@ gh pr create --title "Add overview (zoom-out) map mode with accurate scale chain
 PR body: summarize the scale ladder, scale chain validation, new references,
 validator and tests, and the verification commands run. End the body with the
 project's standard generated-with line if required by reviewers.
+
+## Outcome
+
+Implemented with changes. All ten tasks executed on `feat/overview-map-scales`
+in plan order with per-task commits. Divergence from the written plan: the
+final test count is 38, not 35 - after the validator code review, a follow-up
+commit added tests for the flat-top hex print path, marker out-of-bounds, and
+duplicate child ids. No other deviations; file contents otherwise match the
+plan's embedded sources.
+
+## Current Accuracy
+
+Accurate as of execution, including the test-count divergence noted above. The
+shipped implementation is the source of truth.
