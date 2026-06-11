@@ -325,6 +325,55 @@ class ValidateOverviewSpecTests(unittest.TestCase):
         self.assertEqual(report["errors"], [])
         self.assertIn("PRINT_UNDERFILL", codes(report))
 
+    def test_flat_top_hex_print_orientation_swaps_axes(self):
+        spec = region_spec()
+        spec["technical"]["width_cells"] = 16
+        spec["technical"]["height_cells"] = 9
+        spec["technical"]["print"] = {
+            "enabled": True,
+            "paper": "A3",
+            "physical_grid_mm": 28,
+            "margin_mm": 6,
+            "split_pages": False,
+        }
+        spec["technical"]["orientation"] = "flat"
+        report = self.validate(spec)
+        self.assertEqual(report["errors"], [])
+        spec["technical"]["orientation"] = "pointy"
+        report = self.validate(spec)
+        self.assertIn(
+            "PRINT_REQUIRES_SPLIT",
+            [message.split(":")[0] for message in report["errors"]],
+        )
+
+    def test_marker_out_of_bounds(self):
+        spec = region_spec()
+        spec["children"].append(
+            {
+                "id": "far-ruin",
+                "name": "Far Ruin",
+                "level": "battlemap",
+                "representation": "marker",
+                "x": 14,
+                "y": 3,
+                "footprint": {"width": 120, "height": 90, "unit": "ft"},
+            }
+        )
+        report = self.validate(spec)
+        self.assertIn(
+            "CHAIN_OUT_OF_BOUNDS",
+            [message.split(":")[0] for message in report["errors"]],
+        )
+
+    def test_duplicate_child_id(self):
+        spec = site_spec()
+        spec["children"].append(dict(spec["children"][0]))
+        report = self.validate(spec)
+        self.assertIn(
+            "CHAIN_DUPLICATE_CHILD_ID",
+            [message.split(":")[0] for message in report["errors"]],
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
