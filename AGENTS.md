@@ -239,6 +239,10 @@ When the user corrects your approach, append a one-line rule here before ending 
 - When reviewing generated battlemap images, inspect every door, stair, and archway square individually — image models routinely drop the grid on door-threshold squares even when the rest of the grid is continuous.
 - Battlemap prompts must explicitly state: never render monsters, enemies, or NPCs on the map. Interior layout, cover, and atmospheric details only; players place tokens during play.
 - Battlemap prompts must lead with a numbered coordinate grid (columns 0–N on top, rows 0–M on left), exact column/row counts, and grid lines drawn ABOVE all art/furniture/shadows — stated as the most-important requirement and re-checked first in the post-generation checklist. Image models reliably honor numbered, explicitly-counted grids over vaguely-described ones.
+- Battlemap prompts must require furniture, columns, walls, stairs, cover, and obstacles to occupy whole grid-square footprints, minimum 1x1; sub-square details may be texture only, not tactical objects.
+- Battlemap prompts must require tactical terrain footprints to align to grid-square boundaries; round or curved objects like fountains and counters must be abstracted into square, rectangular, or stepped full-cell footprints.
+- Battlemap prompts must keep all visible parts of a tactical object inside its declared footprint, including column/plinth caps, table edges, bases, shadows, and decorative overhangs.
+- Battlemap prompts must keep scale squares visible over terrain: multi-square fountains/tables/counters/stairs/walls need internal grid subdivisions, and 1x1 columns/plinths must leave all four cell edges readable.
 - When working in this project, use repository-relative paths in shell commands, scripts, and committed files; never absolute machine paths such as `/Users/...`.
 
 ---
