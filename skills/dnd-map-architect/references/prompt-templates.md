@@ -49,6 +49,15 @@ Layout (source of truth):
 {walls_doors_stairs_with_exact_grid_positions}
 {connection_points_and_passageways}
 
+Grid-scale object footprints (mandatory):
+- Every tactical object must occupy whole grid squares and be at least 1 square.
+- Furniture, columns, walls, stairs, cover, obstacles, statues, planters, fountains, shelves, cabinets, and counters must use integer footprints such as 1x1, 1x2, 2x1, or 2x2.
+- No furniture, column, wall, stair, or cover object may be smaller than one full grid square or sit across partial squares.
+- The occupied footprint of each tactical object must be obvious and aligned to grid-square boundaries. Round or curved objects must be abstracted into square, rectangular, or stepped full-cell footprints; decorative curves may sit inside the footprint but must not change which squares are occupied.
+- All visible parts of a tactical object must stay inside its declared footprint, including column bases, plinth caps, table edges, shadows, highlights, and decorative overhangs. A 1x1 object must fit entirely inside one square.
+- Grid lines must remain visible on top of every occupied footprint. Multi-square objects must show their internal scale-square subdivisions: a 2x2 fountain must show the internal cross of four squares, tables/counters/stairs/shelves must be subdivided by grid lines, and 1x1 columns/plinths must leave all four cell edges readable.
+- Small decorative details may appear only as flat texture; they must not imply cover, block movement, hide grid lines, or make token placement ambiguous.
+
 Example of exact specification (adapt as needed):
 - Rows {start_row}–{room1_end}: {room1_name}, {room1_width}×{room1_height} squares
 - Dividing wall between rows {wall_row1} and {wall_row2}
@@ -58,17 +67,17 @@ Example of exact specification (adapt as needed):
 Tactical readability:
 - Furniture must not overcrowd the room
 - Leave clear token-playable squares throughout
-- Cover objects should be visible but not cover the grid
-- Grid lines must be drawn above all art, furniture, shadows, stairs, doors, and thresholds
+- Cover objects should be visible, occupy whole-square footprints, and not cover the grid
+- Grid lines must be drawn above all art, furniture, terrain, shadows, stairs, doors, and thresholds, including through fountains, columns, tables, counters, shelves, and wall bands
 
 Rendering requirements:
 - Strict top-down orthographic view (no perspective, no isometric)
 - Every grid square visible and labeled with coordinates
 - Clear walls, doors, stairs, and walkable spaces
-- Furniture and cover visible but token-playable
+- Furniture and cover visible as full-square tactical pieces, with walkable squares unambiguous
 - Dark grid lines continuous across all squares
 
-No decorative borders. No grid distortion. No missing squares at doorways or thresholds.
+No decorative borders. No grid distortion. No sub-square tactical objects. No missing squares at doorways or thresholds.
 ```
 
 ## Negative Constraints
@@ -87,6 +96,13 @@ Negative constraints (strict):
 - No grid lines obscured by art, furniture, shadows, doors, stairs, or thresholds
 - No monsters, enemies, or NPCs rendered on the map
 - No missing grid squares at doorways, thresholds, or archway openings
+- No furniture, columns, walls, stairs, cover, or obstacles smaller than one full grid square
+- No partial-square tactical object footprints
+- No curved, diagonal, or organic terrain footprints that cross grid lines ambiguously
+- No tactical object art, cap, base, shadow, or overhang spilling outside its declared grid footprint
+- No grid lines missing inside occupied terrain footprints
+- No multi-square fountain, table, counter, stair, shelf, wall band, or terrain feature without visible internal scale-square subdivisions
+- No 1x1 column, statue, or plinth covering the readable grid boundary of its square
 - Grid lines must be visible and continuous across the entire map
 - All {width_squares}×{height_squares} squares must be equally sized and labeled with coordinates
 ```
@@ -101,10 +117,12 @@ Negative constraints (strict):
 4. **Grid visibility:** Dark grid lines must be visible across the entire map, including door thresholds, stair landings, and all archway openings. A single missing or faded square breaks token alignment.
 5. **Room positions:** Confirm each room exists at the specified rows/columns and is the correct size.
 6. **Doorways and connections:** Confirm walls, doorways, and stairs are positioned exactly as specified.
-7. **Furniture and cover:** Furniture should be visible but must not obscure grid lines or create impassable squares.
-8. **No decorative border:** Labels may sit on the edge, but the playable area remains exactly {width_squares}×{height_squares}. No extra border or void area.
-9. **Tactical readability:** All intended token-playable squares should be clear and unobstructed.
-10. **Print alignment (if applicable):** Measure a test page - each square must equal the spec's `physical_grid_mm`, and the full sheet must match the chosen paper.
+7. **Object footprint scale:** Every tactical object is at least one full square and aligned to whole grid-square boundaries; no furniture, column, wall, stair, cover, fountain, counter, table, or obstacle is drawn as a partial-square, diagonal, curved, or ambiguous terrain footprint, and no visible overhang spills outside the declared footprint.
+8. **Scale squares over terrain:** Grid lines remain visible over occupied terrain; a multi-square object such as a fountain/table/counter/stair/shelf/wall band shows internal scale-square subdivisions, and every 1x1 column/plinth leaves its cell boundary readable.
+9. **Furniture and cover:** Furniture should be visible but must not obscure grid lines or create impassable squares.
+10. **No decorative border:** Labels may sit on the edge, but the playable area remains exactly {width_squares}×{height_squares}. No extra border or void area.
+11. **Tactical readability:** All intended token-playable squares should be clear and unobstructed.
+12. **Print alignment (if applicable):** Measure a test page - each square must equal the spec's `physical_grid_mm`, and the full sheet must match the chosen paper.
 
 **If any check fails:** Use the Correction Prompt Template to request a revision targeting the specific issue.
 

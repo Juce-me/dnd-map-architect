@@ -42,6 +42,8 @@ Use this skill to create Dungeons & Dragons battlemaps that are playable first a
 - Do not use prose-only dungeon plans as a bypass for validator-backed image prompt generation.
 - Keep grid math exact: square maps require identical pixels per square on both axes; print maps work in millimeters and require physical grid size, margins, DPI, and a grid sized to fit the chosen paper.
 - Preserve gameplay usability over aesthetics: every combat space needs movement, cover logic, line-of-sight intent, and reachable objectives.
+- Treat tactical objects as grid-scale pieces: furniture, columns, walls, stairs, cover, and obstacles must occupy whole grid-square footprints, with a minimum footprint of 1 square.
+- Never let terrain erase scale squares: grid lines must remain visible over and through every occupied footprint, including fountains, columns, tables, counters, stairs, and walls.
 - Output correction recommendations as concrete changes, not vague style notes.
 
 ## Required Outputs

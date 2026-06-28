@@ -15,6 +15,20 @@ Design for play at the table. Visual detail is secondary to movement, targeting,
 
 If a creature must fight in a room, the room needs footprint space plus movement lanes. A boss arena should usually have each dimension at least `creature footprint + 4` squares and additional area for the party.
 
+## Grid-Scale Tactical Objects
+
+Every tactical object must snap to the grid and occupy whole squares. Furniture, columns, walls, stairs, cover, obstacles, statues, planters, fountains, shelves, cabinets, counters, and similar elements must be at least 1 x 1 square. Longer objects use integer footprints such as 1 x 2, 2 x 1, 2 x 2, or larger.
+
+The occupied footprint must be obvious from the art. Terrain cannot merely be "about one square" while crossing grid lines at arbitrary angles or curves. Draw each tactical object as a cell-bound footprint whose outer edge aligns to grid-square boundaries. If the object is round or curved in fiction, abstract it into a square, rectangular, or stepped full-cell footprint; decorative curves may sit inside that footprint but must not change which squares are occupied.
+
+All visible parts of a tactical object must stay inside its declared footprint, including plinth caps, table edges, column bases, shadows, highlights, and decorative overhangs. A 1 x 1 column or statue may be inset within its square, but it must not spill across the grid line into neighboring squares.
+
+Grid lines must remain visible on top of occupied terrain, not stop at terrain edges. A 2 x 2 fountain must show both the outer grid boundary and the internal cross of the four scale squares across the water/stone. A table, counter, wall band, stair, shelf, planter, or other multi-square footprint must be visibly subdivided by the grid. A 1 x 1 column, statue, or plinth must be inset enough that all four grid edges of its square remain readable.
+
+Do not use sub-square props as tactical elements. Papers, cracks, stains, loose books, candles, trim, and other small details may appear only as flat texture that never implies cover, blocks movement, hides a grid line, or makes a square ambiguous.
+
+Walls that consume playable space must be whole-square wall bands. Perimeter walls may sit outside or exactly on the playable grid edge, but they must not create partial squares. Doors, archways, and stair openings use full-square widths.
+
 ## Combat Room Sizing
 
 - Small skirmish: at least 5 x 5 for a 4-person party against medium enemies.

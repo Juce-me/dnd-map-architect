@@ -31,6 +31,13 @@ Block on:
 - Required stealth route does not exist.
 - Required ranged combat has no viable sightline.
 - Hazard, trap, or puzzle cannot be bypassed, disabled, or intentionally engaged.
+- Tactical furniture, columns, walls, stairs, cover, obstacles, or similar map elements are drawn or specified smaller than one full grid square.
+- Tactical objects have partial-square, diagonal, or ambiguous footprints that make occupied and walkable squares unclear.
+- Tactical terrain crosses grid lines organically instead of having a cell-bound occupied footprint aligned to square boundaries.
+- Tactical object art, shadows, caps, or overhangs spill outside the declared occupied footprint into neighboring squares.
+- Grid lines disappear, stop, or become unreadable inside occupied terrain footprints such as fountains, tables, counters, stairs, columns, wall bands, or shelves.
+- Multi-square terrain does not show internal scale-square subdivisions; for example, a 2 x 2 fountain without a visible internal grid cross is invalid.
+- 1 x 1 columns, statues, or plinths cover their square's grid boundary so the occupied cell is not readable.
 
 Warn on:
 
@@ -38,6 +45,8 @@ Warn on:
 - No cover in ranged-heavy rooms.
 - No alternate path in stealth-focused maps.
 - Excessive decorative clutter over playable grid squares.
+- Decorative sub-square detail reads as tactical cover, an obstacle, or a token-placement boundary.
+- Round or curved terrain is not abstracted into an obvious square, rectangular, or stepped grid footprint.
 
 ## Grid Validation
 
@@ -49,6 +58,10 @@ For square grids:
 - Corridor path segments must be orthogonal.
 - Grid lines must remain straight and evenly spaced.
 - Tokens must fit cleanly in every walkable square.
+- Tactical object footprints must align to whole grid squares; no object may partially consume a square.
+- Occupied squares must be visually obvious from each object's outer footprint.
+- A 1 x 1 object must fit entirely within one square, including decorative cap, base, and shadow.
+- The grid must be visible above every terrain object and must subdivide every multi-square terrain footprint.
 
 For hex grids:
 
